@@ -251,6 +251,13 @@ static NSUInteger loadDetailShopingPageCurrent = 1;
     detail.shopId = model.shopId;
     detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
+    
+//    ZLShopDetailModel *model = _dataArray[indexPath.row];
+//    ZLDetailViewController *detail = [[ZLDetailViewController alloc]init];
+//    detail.isScrollView = NO;
+//    detail.shopId = model.shopId;
+//    detail.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detail animated:YES];
 
 }
 

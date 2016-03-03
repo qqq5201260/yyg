@@ -60,7 +60,7 @@
 
 @property (nonatomic,strong) NSDate *colseTime;
 
-@property (nonatomic,strong) NSDate *startTime;
+//@property (nonatomic,strong) NSDate *startTime;
 
 
 
@@ -125,7 +125,7 @@
 
 @property (nonatomic, copy) NSString *time;
 
-@property (nonatomic, assign) NSArray<NSString *> *numbers;
+@property (nonatomic, copy) NSArray *numbers;
 
 @property (nonatomic, assign) NSInteger uid;
 

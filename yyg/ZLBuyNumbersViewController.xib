@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="buyNumbers" destination="OtU-c0-PTh" id="CzO-Hf-Cyg"/>
                 <outlet property="buyTime" destination="ZsO-0Y-S7p" id="oJX-qO-Xmv"/>
-                <outlet property="eachNumbers" destination="SWe-wG-SIG" id="VE0-yu-yHb"/>
+                <outlet property="eachNumbers" destination="NUe-mq-Egf" id="qEc-Cy-bF5"/>
                 <outlet property="reloadButton" destination="5q0-Si-49N" id="6fg-zE-Brw"/>
                 <outlet property="termName" destination="rsr-J2-Sln" id="iRv-ia-GWA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -87,49 +87,47 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWe-wG-SIG" customClass="UITableView">
-                    <rect key="frame" x="8" y="218" width="359" height="449"/>
-                    <subviews>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5q0-Si-49N">
-                            <rect key="frame" x="150" y="210" width="60" height="30"/>
-                            <state key="normal" title="重新加载"/>
-                            <connections>
-                                <action selector="reloadModel:" destination="-1" eventType="touchUpInside" id="gzc-vJ-dPc"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="5q0-Si-49N" firstAttribute="centerY" secondItem="SWe-wG-SIG" secondAttribute="centerY" id="LD6-7X-vgI"/>
-                        <constraint firstItem="5q0-Si-49N" firstAttribute="centerX" secondItem="SWe-wG-SIG" secondAttribute="centerX" id="Mqt-HU-eRk"/>
-                    </constraints>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5q0-Si-49N">
+                    <rect key="frame" x="290" y="160" width="60" height="21"/>
+                    <state key="normal" title="重新加载"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="EXx-bW-qmq"/>
-                        <outlet property="delegate" destination="-1" id="7lV-Xg-Quo"/>
+                        <action selector="reloadModel:" destination="-1" eventType="touchUpInside" id="gzc-vJ-dPc"/>
                     </connections>
-                </view>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NUe-mq-Egf">
+                    <rect key="frame" x="8" y="218" width="359" height="449"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hb9-Gg-cTa"/>
+                        <outlet property="delegate" destination="-1" id="vTa-YR-6gq"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="NUe-mq-Egf" secondAttribute="bottom" id="1XX-JS-css"/>
                 <constraint firstItem="BJ5-rX-FSo" firstAttribute="leading" secondItem="OtU-c0-PTh" secondAttribute="trailing" constant="21" id="1xm-Bn-SMJ"/>
                 <constraint firstItem="BJ5-rX-FSo" firstAttribute="top" secondItem="OtU-c0-PTh" secondAttribute="top" id="2xd-mI-PXe"/>
-                <constraint firstItem="SWe-wG-SIG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="CJQ-4c-Eue"/>
+                <constraint firstItem="NUe-mq-Egf" firstAttribute="top" secondItem="PuG-RC-tcO" secondAttribute="bottom" constant="8" id="5Pa-nu-VRf"/>
+                <constraint firstItem="5q0-Si-49N" firstAttribute="leading" secondItem="ZsO-0Y-S7p" secondAttribute="trailing" constant="8" id="B5u-QQ-uWc"/>
                 <constraint firstItem="eBp-yo-ggN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="EMJ-n0-4U2"/>
+                <constraint firstAttribute="trailing" secondItem="NUe-mq-Egf" secondAttribute="trailing" constant="8" id="F2A-du-09j"/>
+                <constraint firstItem="5q0-Si-49N" firstAttribute="height" secondItem="ZsO-0Y-S7p" secondAttribute="height" id="G43-wO-CpS"/>
                 <constraint firstItem="ZsO-0Y-S7p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="GyV-al-Wap"/>
                 <constraint firstItem="OtU-c0-PTh" firstAttribute="top" secondItem="eBp-yo-ggN" secondAttribute="top" id="Il7-5e-5Fe"/>
                 <constraint firstItem="OtU-c0-PTh" firstAttribute="leading" secondItem="eBp-yo-ggN" secondAttribute="trailing" constant="22" id="JVg-ih-V7v"/>
+                <constraint firstItem="NUe-mq-Egf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="RdO-mc-xk4"/>
+                <constraint firstItem="5q0-Si-49N" firstAttribute="top" secondItem="ZsO-0Y-S7p" secondAttribute="top" id="SIF-7g-glT"/>
                 <constraint firstItem="rsr-J2-Sln" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="VAn-J8-Cji"/>
                 <constraint firstItem="PuG-RC-tcO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XuC-0V-aCK"/>
-                <constraint firstAttribute="bottom" secondItem="SWe-wG-SIG" secondAttribute="bottom" id="Z50-VA-vAv"/>
                 <constraint firstAttribute="trailing" secondItem="rsr-J2-Sln" secondAttribute="trailing" constant="8" id="auj-bn-d03"/>
                 <constraint firstItem="rsr-J2-Sln" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="d3c-eN-JIz"/>
                 <constraint firstItem="OtU-c0-PTh" firstAttribute="height" secondItem="eBp-yo-ggN" secondAttribute="height" id="fVy-pm-5Lq"/>
                 <constraint firstItem="eBp-yo-ggN" firstAttribute="top" secondItem="rsr-J2-Sln" secondAttribute="bottom" constant="10" id="gAF-I5-MPC"/>
                 <constraint firstItem="0Ek-Qu-vrT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gLv-4k-xNY"/>
+                <constraint firstItem="ZsO-0Y-S7p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="jL6-7V-PHj"/>
                 <constraint firstItem="PuG-RC-tcO" firstAttribute="top" secondItem="ZsO-0Y-S7p" secondAttribute="bottom" constant="8" id="lTV-ov-2sr"/>
                 <constraint firstItem="BJ5-rX-FSo" firstAttribute="height" secondItem="OtU-c0-PTh" secondAttribute="height" id="plS-z3-YER"/>
-                <constraint firstAttribute="trailing" secondItem="SWe-wG-SIG" secondAttribute="trailing" constant="8" id="r8L-Nl-QIP"/>
-                <constraint firstItem="SWe-wG-SIG" firstAttribute="top" secondItem="PuG-RC-tcO" secondAttribute="bottom" constant="8" id="sMo-6v-cBH"/>
                 <constraint firstItem="ZsO-0Y-S7p" firstAttribute="top" secondItem="0Ek-Qu-vrT" secondAttribute="bottom" constant="8" id="sw1-YE-V81"/>
                 <constraint firstItem="0Ek-Qu-vrT" firstAttribute="top" secondItem="eBp-yo-ggN" secondAttribute="bottom" constant="10" id="tmI-jr-eSH"/>
             </constraints>

@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *termName;
 @property (weak, nonatomic) IBOutlet UILabel *buyNumbers;
 @property (weak, nonatomic) IBOutlet UILabel *buyTime;
-@property (weak, nonatomic) IBOutlet UIScrollView *eachNumbers;
+@property (weak, nonatomic) IBOutlet UITableView *eachNumbers;
 
 @property (weak, nonatomic) IBOutlet UIButton *reloadButton;
 
@@ -41,9 +41,12 @@
         for (NSDictionary *dic in dict[@"list"]){
             _winner = [Winner yy_modelWithDictionary:dic];
             if (_winner) {
+               
                 [self createView];
+                 [_eachNumbers reloadData];
+                break;
             }
-            break;
+            
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
@@ -54,17 +57,34 @@
 
 -(void) createView{
 
-      [_winner.numbers enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-          UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(8,8+20*idx, 100, 18)];
-          label.textColor = [UIColor redColor];
-          label.text = obj;
-          [_eachNumbers addSubview:label];
-      }];
+//      [_winner.numbers enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//          UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(8,8+20*idx, 100, 18)];
+//          label.textColor = [UIColor redColor];
+//          label.text = obj;
+//          [_eachNumbers addSubview:label];
+//      }];
     _buyNumbers.text =[NSString stringWithFormat:@"%ld",_winner.numbers.count];
     _buyTime.text = _winner.time;
-    _eachNumbers.contentSize = CGSizeMake(SCREENW, 21*_winner.numbers.count);
+//    _eachNumbers.contentSize = CGSizeMake(SCREENW, 21*_winner.numbers.count);
+    
     
 
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+   return  _winner.numbers.count;
+
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellnumber"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellnumber"];
+    }
+   NSString *str= _winner.numbers[indexPath.row];
+    cell.textLabel.text = str;
+    return cell;
 }
 - (IBAction)reloadModel:(UIButton *)sender {
     sender.hidden = YES;

@@ -58,8 +58,13 @@ static NSUInteger currentPage = 1;  //记录购买记录
     
     UIButton *_time;
    
+    
+//    记录当前网址
+//    NSString *Url;
+//    的底视图
+    UIView * bottomView;
 }
-static CGFloat lastTime=999999999;
+//static CGFloat lastTime=999999999;
 - (void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = NO;
 
@@ -69,6 +74,16 @@ static CGFloat lastTime=999999999;
     self.title = @"商品详情";
     UIBarButtonItem *btn =[[UIBarButtonItem alloc]initWithTitle:@"夺宝" style:UIBarButtonItemStylePlain target:self action:@selector(onBack)];
     self.navigationItem.leftBarButtonItem = btn;
+    
+    _butLIstTableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
+    [self.view addSubview:_butLIstTableView];
+    _butLIstTableView.dataSource = self;
+    _butLIstTableView.delegate = self;
+    
+//    添加尾视图
+    bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENH-44, SCREENW, 44)];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:bottomView];
     
     [self createUI];
 //    [self loadShipDataModel:(NSString *)]
@@ -111,6 +126,7 @@ static CGFloat lastTime=999999999;
     ZLShareViewController *share = [[ZLShareViewController alloc]init];
     share.gid = _model.gid;
     [self.navigationController pushViewController:share animated:YES];
+    
 }
 
 
@@ -124,19 +140,12 @@ static CGFloat lastTime=999999999;
     }else{
         URL = [NSString stringWithFormat:@"%@/%@",API_MAIN_GOODS_LISTS_URL,shopId];
     }
-   
+//    Url = URL;
     [self loadShipDataModel:URL];
     
 }
 
-//- (void)awakeFromNib{
-////    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENW, 40)];
-////    label.text = @"购买记录";
-////    label.textColor = [UIColor blackColor];
-////    self.butLIstTableView.tableHeaderView = label;
-////    _showScrollView.showsHorizontalScrollIndicator = NO;
-//
-//}
+
 
 - (void)loadShipDataModel:(NSString *)url{
     [[AFHTTPSessionManager YYGManager]GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -144,13 +153,15 @@ static CGFloat lastTime=999999999;
         if( model.revealed.remain_ms!=0)
         {
             NSDate *date = [NSDate date];
-            model.colseTime = [NSDate dateWithTimeInterval:model.revealed.remain_ms sinceDate:date];
+            model.colseTime = [NSDate dateWithTimeInterval:model.revealed.remain_ms/1000+10 sinceDate:date];
             //               model.
-            model.startTime = date;
+//            model.startTime = date;
         }
         _model = model;
-        [self loadBuyListWithUrl:[NSString stringWithFormat:API_BUY_RECORDS_URL,model.shopId] first:YES];
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
         [self buildUI:model];
+        [self loadBuyListWithUrl:[NSString stringWithFormat:API_BUY_RECORDS_URL,model.shopId] first:YES];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -203,7 +214,7 @@ static CGFloat lastTime=999999999;
         
        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (![_butLIstTableView.mj_footer isRefreshing]) {
+        if ([_butLIstTableView.mj_footer isRefreshing]) {
             [_butLIstTableView.mj_footer endRefreshing];
         }
         [SVProgressHUD showErrorWithStatus:@"网络未联通"];
@@ -212,12 +223,10 @@ static CGFloat lastTime=999999999;
 }
 
 
-
+#pragma mark 创建UI
 - (void)createUI {
-    _butLIstTableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
-    [self.view addSubview:_butLIstTableView];
-    _butLIstTableView.dataSource = self;
-    _butLIstTableView.delegate = self;
+    
+//    头视图
     headerView = [[UIView alloc]init];
     
   
@@ -259,11 +268,10 @@ static CGFloat lastTime=999999999;
     
     
     if (model.status ==4) {
-//        for (UIView *view in _showShopView.subviews) {
-//            view.hidden =YES;
-//        }
+
+        
         [_status setTitle:@"已揭晓" forState:UIControlStateNormal];
-//        ZLPrizeWinnerView *Prize = [[ZLPrizeWinnerView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_winnerView.frame), 190)];
+
         ZLPrizeWinnerView *Prize = [[[NSBundle mainBundle]loadNibNamed:@"WinnerView" owner:nil options:nil] firstObject];
         Prize.winner = model.revealed;
         Prize.CalBlock = ^(){
@@ -277,6 +285,19 @@ static CGFloat lastTime=999999999;
         [_showShopView addSubview:Prize];
         
         _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetHeight(Prize.frame)+8);
+        //        添加底部视图
+        UIButton *goNextButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREENW-108, 2, 100, 40)];
+        [goNextButton setTitle:@"立即前往" forState:UIControlStateNormal];
+        goNextButton.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+        [goNextButton setBackgroundImage:[UIImage imageNamed:@"commodity_property_no_select"] forState:UIControlStateNormal];
+        [goNextButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [goNextButton addTarget:self action:@selector(goNextTerm:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:goNextButton];
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
+        title.textColor = [UIColor redColor];
+        title.text = @"下期还有好机会哟，亲";
+        title.font = [UIFont boldSystemFontOfSize:20];
+        [bottomView addSubview:title];
     }
     else if(model.status ==1){
         _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(8, 8, SCREENW-16, 5)];
@@ -298,6 +319,29 @@ static CGFloat lastTime=999999999;
         _countLabel.text =[NSString stringWithFormat:@"总计需要：%ld人次",model.target_amount];
         _otherLabel.text = [NSString stringWithFormat:@"剩余：%ld人次",model.target_amount-model.current_amount];
         _progress.progress = ((CGFloat)model.current_amount)/model.target_amount;
+        
+       UIButton *nowBuy= [[UIButton alloc]initWithFrame:CGRectMake(4, 2, SCREENW/3+16, 40)];
+        [nowBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [nowBuy setTitle:@"立即购买" forState:UIControlStateNormal];
+//        [nowBuy addTarget:self action:@selector(nowBuyClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:nowBuy];
+        
+        UIButton *addBuy= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nowBuy.frame)+4, 2, SCREENW/3+16, 40)];
+        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
+//        [addBuy addTarget:self action:@selector(addBuyClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:addBuy];
+        bottomView.backgroundColor = [UIColor redColor];
+        
+        
+        UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+4, 6, SCREENW/4-16, 30)];
+        [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
+        [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
+//        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
+//        [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:buyList];
+       
 //        NSLog(@"otherLabe:%@,sc:%@",NSStringFromCGRect(_otherLabel.frame),NSStringFromCGRect(_winnerView.frame));
     }
     
@@ -316,21 +360,35 @@ static CGFloat lastTime=999999999;
         _time.titleLabel.font = [UIFont boldSystemFontOfSize:17];
         
         _time.userInteractionEnabled =NO;
+        _time.titleLabel.textAlignment = NSTextAlignmentLeft;
+        
         [view addSubview:_time];
         [_showShopView addSubview:view];
         if (model.revealed.remain_ms!=0) {
             NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timeCal:) userInfo:nil repeats:YES];
             [[NSRunLoop mainRunLoop]addTimer:timer forMode:@"NSRunLoopCommonModes"];
+            
         }
+        
        
-//        UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(SCREENW-80, 4, 72, 30)];
-//        [btn setTitle:@"计算详情" forState:UIControlStateNormal];
-//        [view addSubview:btn];
+
         
         
         _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetMaxY(view.frame)+8);
 //        [_showShopView addSubview:_isBuyButton];
-    
+        //        添加底部视图
+        UIButton *goNextButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREENW-108, 2, 100, 40)];
+        [goNextButton setTitle:@"立即前往" forState:UIControlStateNormal];
+        goNextButton.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+        [goNextButton setBackgroundImage:[UIImage imageNamed:@"commodity_property_no_select"] forState:UIControlStateNormal];
+        [goNextButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [goNextButton addTarget:self action:@selector(goNextTerm:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:goNextButton];
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
+        title.textColor = [UIColor redColor];
+        title.font = [UIFont boldSystemFontOfSize:20];
+        title.text = @"下期还有好机会哟，亲";
+        [bottomView addSubview:title];
         
     }
     
@@ -379,39 +437,57 @@ static CGFloat lastTime=999999999;
     headerView.frame = CGRectMake(0, 0, SCREENW, CGRectGetMaxY(_shareButton.frame)+10);
     _butLIstTableView.tableHeaderView = headerView;
     
-
+//尾视图
+//    [self.view addSubview:bottomView];
 }
 
+//显示下一个项目
+- (void)goNextTerm:(UIButton *)btn{
 
-- (void)timeOnclick:(UIButton *)btn{
-    [SVProgressHUD showSuccessWithStatus:@"奇迹马上来"];
-    btn.userInteractionEnabled = NO;
     
+    ZLDetailViewController *detail = [[ZLDetailViewController alloc]init];
+    detail.isScrollView = NO;
+    detail.shopId = _model.latest_id;
+//    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
 
 }
 
+//#pragma mark 显示胜者
+//- (void)timeOnclick:(UIButton *)btn{
+//    [SVProgressHUD showSuccessWithStatus:@"奇迹马上来"];
+//    [self loadShipDataModel:Url];
+//    [self.view setNeedsDisplay];
+//    btn.userInteractionEnabled = NO;
+//    
+//
+//}
 
-//时间重用
+
+#pragma mark  时间重用
+
 - (void)timeCal:(NSTimer *)tim{
 
-    NSDateFormatter *format = [[NSDateFormatter alloc]init];
-    format.dateFormat = @"mm:ss:SS";
-    lastTime = [_model.colseTime timeIntervalSinceDate:[NSDate date]];
+    int unit = NSCalendarUnitMinute | NSCalendarUnitSecond |NSCalendarUnitNanosecond ;
     
-    NSDate *date = [NSDate dateWithTimeInterval:lastTime sinceDate:_model.startTime];
+    NSDateComponents *component = [[NSCalendar currentCalendar] components:unit fromDate:[NSDate date] toDate:_model.colseTime options:NSCalendarWrapComponents];
     
-    NSString *title = [NSString stringWithFormat:@"%@",[format stringFromDate:date]];
-    //    NSInteger  fen = ((NSInteger)lastTime)/60000;
-    //    NSInteger  miao = ((NSInteger) lastTime)/1000%60;
-    //    NSInteger mm = ((NSInteger) lastTime)%1000/10;
-    //    NSString *title = [NSString stringWithFormat:@"%ld:%ld:%ld",fen,miao,mm];
-    if (lastTime<=0) {
+    NSString *title = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",component.minute,component.second,component.nanosecond/10000000];
+    if (component.nanosecond<=0) {
+//        _time.userInteractionEnabled = YES;
         //        停止时间
         [tim invalidate];
         tim = nil;
         title = @"见证奇迹";
-        [_time addTarget:self action:@selector(timeOnclick:) forControlEvents:UIControlEventTouchUpInside];
-        _time.userInteractionEnabled = YES;
+        [_time setTitle:title forState:UIControlStateNormal];
+        [SVProgressHUD showSuccessWithStatus:@"奇迹马上来"];
+        ZLDetailViewController *detail = [[ZLDetailViewController alloc]init];
+        detail.isScrollView = NO;
+        detail.shopId = _model.shopId;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+        
+//        [_time addTarget:self action:@selector(timeOnclick:) forControlEvents:UIControlEventTouchDragInside];
     }
     [_time setTitle:title forState:UIControlStateNormal];
     

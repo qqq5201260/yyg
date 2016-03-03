@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ZLShopDetailModel.h"
+//@class ZLUserBuyTableViewCell;
+//@protocol UserBuyTableViewCellDelegate <NSObject>
+//
+//-(void)userBuyTableViewCell:(ZLUserBuyTableViewCell *)tablecell termString:(NSString *)term;
+//
+//@end
 @interface ZLUserBuyTableViewCell : UITableViewCell
 
 @property (nonatomic,strong) ZLShopDetailModel *model;
 
 @property (nonatomic,copy) void(^buyNumberBlock)(NSString *term);
+//@property (nonatomic,weak) id<UserBuyTableViewCellDelegate> delegate;
 
 @end

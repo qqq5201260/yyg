@@ -82,19 +82,20 @@ static NSInteger currentPage = 1;
     // Configure the cell
     ZLShopDetailModel *model = _dataArray[indexPath.row];
     if (model.remain_ms!=0) {
-//        NSDate *date = []
+
         model.remain_ms = [model.colseTime timeIntervalSinceDate:[NSDate date]];
     }
-//    model.remain_ms  = [[NSDate date] timeIntervalSinceDate:[NSDate dateWithTimeInterval:model.remain_ms ];
+
     cell.model = model;
     cell.reFreshCell = ^(UIButton *btn){
-        
+        [SVProgressHUD showSuccessWithStatus:@"奇迹马上来，我在加载"];
         [[AFHTTPSessionManager YYGManager]GET:[NSString stringWithFormat:@"%@/%@",API_MAIN_GOODS_LISTS_URL,model.shopId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             ZLShopDetailModel *model1 =[ZLShopDetailModel yy_modelWithDictionary:responseObject[@"data"]];
 //            [ZLShopDetailModel
             [_dataArray replaceObjectAtIndex:indexPath.row withObject:model1];
             btn.userInteractionEnabled = YES;
             [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            [SVProgressHUD showSuccessWithStatus:@"奇迹看到了吧"];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [SVProgressHUD  showErrorWithStatus:@"查看失败，请稍后再试"];
              btn.userInteractionEnabled = YES;
@@ -139,11 +140,10 @@ static NSInteger currentPage = 1;
            if( model.remain_ms!=0)
            {
                NSDate *date = [NSDate date];
-               model.colseTime = [NSDate dateWithTimeInterval:model.remain_ms sinceDate:date];
-//               model.
-               model.startTime = date;
+               model.colseTime = [NSDate dateWithTimeInterval:model.remain_ms/1000+10 sinceDate:date];
+
            }
-//            NSLog(@"model:%@",model);
+
             [_dataArray addObject:model];
         }
         
@@ -174,19 +174,7 @@ static NSInteger currentPage = 1;
     
 }
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ZLShopDetailModel *model = _dataArray[indexPath.row];
@@ -198,20 +186,7 @@ static NSInteger currentPage = 1;
     
 }
 
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 - (void)reloadCollectionViewData:(UIButton *)btn{
     [btn removeFromSuperview];
     

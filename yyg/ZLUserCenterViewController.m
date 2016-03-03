@@ -127,12 +127,15 @@ static NSUInteger currentPage = 1;
         ZLShopDetailModel *model = _dataArray[indexPath.row];
         
         cell.model = model;
+//        cell.delegate = self;
+//        __weak typeof(self) otherSelf;
         cell.buyNumberBlock = ^(NSString *term){
             ZLBuyNumbersViewController *buyView = [[ZLBuyNumbersViewController alloc]initWithNibName:@"ZLBuyNumbersViewController" bundle:nil];
             buyView.term = term;
             buyView.shopId = model.shopId;
             buyView.uid = _winner.uid;
             [self.navigationController pushViewController:buyView animated:YES];
+           
         };
         return cell;
     }
@@ -160,6 +163,12 @@ static NSUInteger currentPage = 1;
     
 }
 
+
+//#pragma mark cell代理
+//- (void) userBuyTableViewCell:(ZLUserBuyTableViewCell *)tablecell termString:(NSString *)term{
+//
+//
+//}
 
 
 - (void)loadDataUserRecords:(BOOL)first{

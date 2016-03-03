@@ -45,6 +45,7 @@
 - (IBAction)resultButtonClick:(UIButton *)sender {
     sender.userInteractionEnabled = NO;
     sender.backgroundColor =[UIColor lightGrayColor];
+//    [SVProgressHUD showSuccessWithStatus:@"正在重新加载中"];
     self.reFreshCell(sender);
     
 }
@@ -55,13 +56,14 @@
     [_shopIcon sd_setImageWithURL:[NSURL URLWithString:model.goods.cover] placeholderImage:[UIImage imageNamed:@"default_bg_small"]];
     _shopName.text =[NSString stringWithFormat:@"商品名:%@",model.goods.name];
     _shopTerm.text = [NSString stringWithFormat:@"期  号:%ld",model.term];
-    if (model.winner) {
+    if (model.winner || model.revealed.winner) {
+        Winner *win = model.winner?model.winner:model.revealed.winner;
         _resultView.hidden = NO;
         _calView.hidden =YES;
-        _winnerName.text = [NSString stringWithFormat:@"获奖者:%@",model.winner.nick_name];
-        _winnerId.text = [NSString stringWithFormat:@"用户ID:%ld",model.winner.uid];
+        _winnerName.text = [NSString stringWithFormat:@"获奖者:%@",win.nick_name];
+        _winnerId.text = [NSString stringWithFormat:@"用户ID:%ld",win.uid];
         _winLuckNumber.text = [NSString stringWithFormat:@"幸运号码:%@",model.lucky_number];
-        _winnerNum.text = [NSString stringWithFormat:@"本期参与:%ld人次",model.winner.num_count];
+        _winnerNum.text = [NSString stringWithFormat:@"本期参与:%ld人次",win.num_count];
     }
     else{
     
@@ -81,18 +83,15 @@
 
 - (void)changeButtonTitle:(NSTimer *)time{
     
-    NSDateFormatter *format = [[NSDateFormatter alloc]init];
-    format.dateFormat = @"mm:ss:SS";
-    lastTime = [_model.colseTime timeIntervalSinceDate:[NSDate date]];
+//    NSDateFormatter *format = [[NSDateFormatter alloc]init];
+//    format.dateFormat = @"mm:ss:SS";
+    
+    int unit = NSCalendarUnitMinute | NSCalendarUnitSecond |NSCalendarUnitNanosecond ;
+    
+    NSDateComponents *component = [[NSCalendar currentCalendar] components:unit fromDate:[NSDate date] toDate:_model.colseTime options:NSCalendarWrapComponents];
 
-    NSDate *date = [NSDate dateWithTimeInterval:lastTime sinceDate:_model.startTime];
-
-    NSString *title = [NSString stringWithFormat:@"%@",[format stringFromDate:date]];
-//    NSInteger  fen = ((NSInteger)lastTime)/60000;
-//    NSInteger  miao = ((NSInteger) lastTime)/1000%60;
-//    NSInteger mm = ((NSInteger) lastTime)%1000/10;
-//    NSString *title = [NSString stringWithFormat:@"%ld:%ld:%ld",fen,miao,mm];
-    if (lastTime<=0) {
+    NSString *title = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",component.minute,component.second,component.nanosecond/10000000];
+    if (component.nanosecond<=0) {
 //        停止时间
         [time invalidate];
         time = nil;

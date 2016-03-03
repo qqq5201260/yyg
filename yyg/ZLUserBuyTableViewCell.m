@@ -32,6 +32,9 @@
 - (IBAction)checkUser:(UIButton *)sender {
     NSLog(@"%s",__FUNCTION__);
     self.buyNumberBlock(_shopTerm.text);
+//    __weak typeof(self) otherSelf;
+//    [self.delegate userBuyTableViewCell:self termString:_shopTerm.text];
+
 }
 
 - (void)setModel:(ZLShopDetailModel *)model{
