@@ -1,0 +1,72 @@
+//
+//  ZLPrefixHeader.pch
+//  yyg
+//
+//  Created by 千锋 on 16/2/23.
+//  Copyright © 2016年 czl. All rights reserved.
+//
+
+#ifndef ZLPrefixHeader_pch
+#define ZLPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//第三方库
+#include <YYModel.h>
+#include <YYModel.h>
+#include <AFNetworking.h>
+#include <SVProgressHUD.h>
+#include <UIImageView+WebCache.h>
+#include <UIButton+WebCache.h>
+
+#include <MJRefresh.h>
+//添加自定义类别
+#include "AFHTTPSessionManager+Util.h"
+
+
+//接口名称
+/**滚动视图接口:*/
+#define API_MAIN_SCROLL_URL @"http://www.1yuan-gou.com/api/v1/banners/"
+/**商品详情*/
+#define API_MAIN_SCROLL_DETAIL_GOODS_URL @"http://www.1yuan-gou.com/api/v2/groups/%@/latest"
+
+/**通知视图列表接口*/
+#define API_MAIN_MESSAGE_URL @"http://www.1yuan-gou.com/api/v1/scrolling/"
+/**商品列表接口*/
+#define API_MAIN_GOODS_LISTS_URL @"http://www.1yuan-gou.com/api/v1/activitys"
+
+
+/**购买记录接口*/
+#define API_BUY_RECORDS_URL @"http://www.1yuan-gou.com/api/v1/activitys/%@/records"
+
+/**夺宝时间详情*/
+#define API_BUY_DETAIL_LIST @"http://www.1yuan-gou.com/api/v1/activitys/%@/calclist"
+
+/**用户夺宝记录*/
+#define API_USER_BUY_RECORDS @"http://www.1yuan-gou.com/api/v2/user/%ld/activitys"
+/**用户晒单记录*/
+#define API_USER_SHOW_RECORDS @"http://www.1yuan-gou.com/api/v1/user/%ld/shows"
+/**查看号码详情*/
+#define API_USER_BUY_NUMBERS @"http://www.1yuan-gou.com/api/v1/activitys/%@/records"
+//?other=15035169&page=1
+
+//"h"ttp://www.1yuan-gou.com/api/v1/activitys?"status=6&page=1"
+/**往期接口*/
+
+#define API_SHOP_POSTS @"http://www.1yuan-gou.com/api/v2/groups/%ld/winners"
+//?page=0
+
+/**查看大图*/
+#define API_SHOP_BIGPIC @"http://1yuan-gou.com/activity_gallery/%@"
+
+/**分享接口*/
+#define API_SHARE_DETAIL @"http://www.1yuan-gou.com/api/v1/shows/timeline/"
+//?gid=235&start_ts=0
+/**分享详情借口*/
+#define API_SHARE_MORE_DETAILE @"http://www.1yuan-gou.com/api/v1/shows/%@"
+//发现借口
+#define API_DISCOVERY_URL @"http://www.1yuan-gou.com/api/v1/discovery/"
+
+#define SCREENW [[UIScreen mainScreen]bounds].size.width
+#define SCREENH [[UIScreen mainScreen]bounds].size.height
+#endif /* ZLPrefixHeader_pch */
