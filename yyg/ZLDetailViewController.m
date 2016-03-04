@@ -27,6 +27,8 @@
 //@property (weak, nonatomic) IBOutlet UIProgressView *progress;
 
 
+@property (nonatomic,strong) UIView *bottomView;
+
 @end
 static NSUInteger currentPage = 1;  //记录购买记录
 @implementation ZLDetailViewController
@@ -60,9 +62,9 @@ static NSUInteger currentPage = 1;  //记录购买记录
    
     
 //    记录当前网址
-//    NSString *Url;
+    NSString *Url;
 //    的底视图
-    UIView * bottomView;
+//    UIView * bottomView;
 }
 //static CGFloat lastTime=999999999;
 - (void)viewWillAppear:(BOOL)animated{
@@ -72,6 +74,9 @@ static NSUInteger currentPage = 1;  //记录购买记录
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商品详情";
+    self.bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENH-44, SCREENW, 44)];
+    [self.view addSubview:_bottomView];
+    
     UIBarButtonItem *btn =[[UIBarButtonItem alloc]initWithTitle:@"夺宝" style:UIBarButtonItemStylePlain target:self action:@selector(onBack)];
     self.navigationItem.leftBarButtonItem = btn;
     
@@ -80,17 +85,11 @@ static NSUInteger currentPage = 1;  //记录购买记录
     _butLIstTableView.dataSource = self;
     _butLIstTableView.delegate = self;
     
-//    添加尾视图
-    bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENH-44, SCREENW, 44)];
-    bottomView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:bottomView];
+//    self.
     
     [self createUI];
-//    [self loadShipDataModel:(NSString *)]
-//    [self setShopId:_shopId];
-    
-//    self.tabBarController.tabBar.hidden = YES;
-    // Do any additional setup after loading the view from its nib.
+    [self loadShipDataModel:Url];
+
 }
 - (void)onBack{
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -140,8 +139,8 @@ static NSUInteger currentPage = 1;  //记录购买记录
     }else{
         URL = [NSString stringWithFormat:@"%@/%@",API_MAIN_GOODS_LISTS_URL,shopId];
     }
-//    Url = URL;
-    [self loadShipDataModel:URL];
+    Url = URL;
+    
     
 }
 
@@ -292,12 +291,12 @@ static NSUInteger currentPage = 1;  //记录购买记录
         [goNextButton setBackgroundImage:[UIImage imageNamed:@"commodity_property_no_select"] forState:UIControlStateNormal];
         [goNextButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [goNextButton addTarget:self action:@selector(goNextTerm:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomView addSubview:goNextButton];
+        [_bottomView addSubview:goNextButton];
         UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
         title.textColor = [UIColor redColor];
         title.text = @"下期还有好机会哟，亲";
         title.font = [UIFont boldSystemFontOfSize:20];
-        [bottomView addSubview:title];
+        [_bottomView addSubview:title];
     }
     else if(model.status ==1){
         _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(8, 8, SCREENW-16, 5)];
@@ -324,23 +323,23 @@ static NSUInteger currentPage = 1;  //记录购买记录
         [nowBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [nowBuy setTitle:@"立即购买" forState:UIControlStateNormal];
 //        [nowBuy addTarget:self action:@selector(nowBuyClick:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomView addSubview:nowBuy];
+        [_bottomView addSubview:nowBuy];
         
         UIButton *addBuy= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nowBuy.frame)+4, 2, SCREENW/3+16, 40)];
         [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
 //        [addBuy addTarget:self action:@selector(addBuyClick:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomView addSubview:addBuy];
-        bottomView.backgroundColor = [UIColor redColor];
+        [_bottomView addSubview:addBuy];
+//        _bottomView.backgroundColor = [UIColor redColor];
         
         
         UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+4, 6, SCREENW/4-16, 30)];
         [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
         [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
-//        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
-//        [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomView addSubview:buyList];
+        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
+        [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_bottomView addSubview:buyList];
        
 //        NSLog(@"otherLabe:%@,sc:%@",NSStringFromCGRect(_otherLabel.frame),NSStringFromCGRect(_winnerView.frame));
     }
@@ -383,12 +382,12 @@ static NSUInteger currentPage = 1;  //记录购买记录
         [goNextButton setBackgroundImage:[UIImage imageNamed:@"commodity_property_no_select"] forState:UIControlStateNormal];
         [goNextButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [goNextButton addTarget:self action:@selector(goNextTerm:) forControlEvents:UIControlEventTouchUpInside];
-        [bottomView addSubview:goNextButton];
+        [_bottomView addSubview:goNextButton];
         UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
         title.textColor = [UIColor redColor];
         title.font = [UIFont boldSystemFontOfSize:20];
         title.text = @"下期还有好机会哟，亲";
-        [bottomView addSubview:title];
+        [_bottomView addSubview:title];
         
     }
     
@@ -439,6 +438,8 @@ static NSUInteger currentPage = 1;  //记录购买记录
     
 //尾视图
 //    [self.view addSubview:bottomView];
+//    把视图拿到最上面
+    [self.view bringSubviewToFront:self.bottomView];
 }
 
 //显示下一个项目

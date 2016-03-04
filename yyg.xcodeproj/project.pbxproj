@@ -12,6 +12,8 @@
 		0D1209461C8316550038C9CF /* ZLShareDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1209441C8316550038C9CF /* ZLShareDetailViewController.m */; };
 		0D1209471C8316550038C9CF /* ZLShareDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1209451C8316550038C9CF /* ZLShareDetailViewController.xib */; };
 		0D12094A1C83310B0038C9CF /* ZLSharePicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1209491C83310B0038C9CF /* ZLSharePicModel.m */; };
+		0D7820011C8915920035E229 /* ZLBuyOraddView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7820001C8915920035E229 /* ZLBuyOraddView.m */; };
+		0D7820031C8915F60035E229 /* ZLBuyOrAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7820021C8915F60035E229 /* ZLBuyOrAddView.xib */; };
 		0D829D6F1C8688170014B795 /* ZLFindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D829D6D1C8688170014B795 /* ZLFindTableViewCell.m */; };
 		0D829D701C8688170014B795 /* ZLFindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D829D6E1C8688170014B795 /* ZLFindTableViewCell.xib */; };
 		0DB394911C85D660006AAEED /* ZLFindTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB394901C85D660006AAEED /* ZLFindTitleModel.m */; };
@@ -72,6 +74,9 @@
 		0D1209451C8316550038C9CF /* ZLShareDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLShareDetailViewController.xib; sourceTree = "<group>"; };
 		0D1209481C83310B0038C9CF /* ZLSharePicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLSharePicModel.h; sourceTree = "<group>"; };
 		0D1209491C83310B0038C9CF /* ZLSharePicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLSharePicModel.m; sourceTree = "<group>"; };
+		0D781FFF1C8915920035E229 /* ZLBuyOraddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLBuyOraddView.h; sourceTree = "<group>"; };
+		0D7820001C8915920035E229 /* ZLBuyOraddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLBuyOraddView.m; sourceTree = "<group>"; };
+		0D7820021C8915F60035E229 /* ZLBuyOrAddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLBuyOrAddView.xib; sourceTree = "<group>"; };
 		0D829D6C1C8688170014B795 /* ZLFindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFindTableViewCell.h; sourceTree = "<group>"; };
 		0D829D6D1C8688170014B795 /* ZLFindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLFindTableViewCell.m; sourceTree = "<group>"; };
 		0D829D6E1C8688170014B795 /* ZLFindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLFindTableViewCell.xib; sourceTree = "<group>"; };
@@ -234,6 +239,9 @@
 				0D829D6C1C8688170014B795 /* ZLFindTableViewCell.h */,
 				0D829D6D1C8688170014B795 /* ZLFindTableViewCell.m */,
 				0D829D6E1C8688170014B795 /* ZLFindTableViewCell.xib */,
+				0D781FFF1C8915920035E229 /* ZLBuyOraddView.h */,
+				0D7820001C8915920035E229 /* ZLBuyOraddView.m */,
+				0D7820021C8915F60035E229 /* ZLBuyOrAddView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 			files = (
 				BCEA87521C816E48002EB9B0 /* ZLUserBuyRecordsTableViewCell.xib in Resources */,
 				BC610E4B1C7F223500EF2652 /* ZLCalDetailViewController.xib in Resources */,
+				0D7820031C8915F60035E229 /* ZLBuyOrAddView.xib in Resources */,
 				BC0BB8E71C80925D00A55676 /* ZLWinnerSmalTableViewCell.xib in Resources */,
 				BC97E28B1C79B9CF007A1C49 /* LaunchScreen.storyboard in Resources */,
 				BCEE67231C7DD1B20013EB0A /* WinnerView.xib in Resources */,
@@ -506,6 +515,7 @@
 				BC610E4F1C7F2E3800EF2652 /* ZLBuyListModel.m in Sources */,
 				BCEA87561C8183D6002EB9B0 /* ZLBuyNumbersViewController.m in Sources */,
 				BC0BB8DA1C804E8B00A55676 /* ZLUserCenterViewController.m in Sources */,
+				0D7820011C8915920035E229 /* ZLBuyOraddView.m in Sources */,
 				BC7B7F2C1C7C5D820078CCE0 /* ZLDetailViewController.m in Sources */,
 				BCDD1EA21C7B356300241DE1 /* ZLMainViewController.m in Sources */,
 				BC7B7F311C7C6E7E0078CCE0 /* AFHTTPSessionManager+Util.m in Sources */,
