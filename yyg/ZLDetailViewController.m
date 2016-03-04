@@ -14,6 +14,7 @@
 #import "ZLPicDetailViewController.h"
 #import "ZLShopPostTimesTableViewController.h"
 #import "ZLShareViewController.h"
+#import "ZLBuyOraddView.h"
 @interface ZLDetailViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *showScrollView;
 //@property (weak, nonatomic) IBOutlet UIPageControl *showPageControl;
@@ -74,7 +75,8 @@ static NSUInteger currentPage = 1;  //记录购买记录
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商品详情";
-    self.bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENH-44, SCREENW, 44)];
+    self.bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENH-44-64, SCREENW, 44)];
+    
     [self.view addSubview:_bottomView];
     
     UIBarButtonItem *btn =[[UIBarButtonItem alloc]initWithTitle:@"夺宝" style:UIBarButtonItemStylePlain target:self action:@selector(onBack)];
@@ -88,7 +90,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 //    self.
     
     [self createUI];
-    [self loadShipDataModel:Url];
+    
 
 }
 - (void)onBack{
@@ -132,6 +134,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 
 
 - (void) setShopId:(NSString *)shopId{
+    self.navigationController.navigationBar.translucent = NO;
     _shopId = shopId;
     NSString *URL =nil;
     if (_isScrollView) {
@@ -141,7 +144,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
     }
     Url = URL;
     
-    
+    [self loadShipDataModel:Url];
 }
 
 
@@ -162,7 +165,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
         [self loadBuyListWithUrl:[NSString stringWithFormat:API_BUY_RECORDS_URL,model.shopId] first:YES];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [SVProgressHUD showErrorWithStatus:@"网络错误"];
     }];
     
     
@@ -266,24 +269,58 @@ static NSUInteger currentPage = 1;  //记录购买记录
     
     
     
-    if (model.status ==4) {
+    if (model.status ==1) {
 
+       
         
-        [_status setTitle:@"已揭晓" forState:UIControlStateNormal];
-
-        ZLPrizeWinnerView *Prize = [[[NSBundle mainBundle]loadNibNamed:@"WinnerView" owner:nil options:nil] firstObject];
-        Prize.winner = model.revealed;
-        Prize.CalBlock = ^(){
-//        添加计算详情按钮事件
-            ZLCalDetailViewController *cal = [[ZLCalDetailViewController alloc]init];;
-            cal.shopId = model.shopId;
-            [self.navigationController pushViewController:cal animated:YES];
-        };
-//        self.winnerView.clipsToBounds = YES;
-        [Prize addTarget:self action:@selector(ClickWinnerButton:) forControlEvents:UIControlEventTouchUpInside];
-        [_showShopView addSubview:Prize];
         
-        _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetHeight(Prize.frame)+8);
+            _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(8, 8, SCREENW-16, 5)];
+            _progress.tintColor = [UIColor yellowColor];
+            [_showShopView addSubview:_progress];
+            _countLabel = [[UILabel alloc]initWithFrame:CGRectMake(8,CGRectGetMaxY(_progress.frame)+8, SCREENW/2-16, 30)];
+            [_showShopView addSubview:_countLabel];
+            _otherLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_countLabel.frame)+8, CGRectGetMaxY(_progress.frame)+8, SCREENW/2-16, 30)];
+            _otherLabel.textColor = [UIColor redColor];
+            [_showShopView addSubview:_otherLabel];
+            
+            
+            _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetMaxY(_otherLabel.frame)+8);
+            
+            
+            
+            
+            [_status setTitle:@"进行中" forState:UIControlStateNormal];
+            _countLabel.text =[NSString stringWithFormat:@"总计需要：%ld人次",model.target_amount];
+            _otherLabel.text = [NSString stringWithFormat:@"剩余：%ld人次",model.target_amount-model.current_amount];
+            _progress.progress = ((CGFloat)model.current_amount)/model.target_amount;
+            
+            UIButton *nowBuy= [[UIButton alloc]initWithFrame:CGRectMake(4, 2, SCREENW/3+16, 40)];
+            [nowBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [nowBuy setTitle:@"立即购买" forState:UIControlStateNormal];
+            [nowBuy addTarget:self action:@selector(nowBuyClick:) forControlEvents:UIControlEventTouchUpInside];
+            [_bottomView addSubview:nowBuy];
+            
+            UIButton *addBuy= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nowBuy.frame)+4, 2, SCREENW/3+16, 40)];
+            [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
+            [addBuy addTarget:self action:@selector(addBuyClick:) forControlEvents:UIControlEventTouchUpInside];
+            [_bottomView addSubview:addBuy];
+            //        _bottomView.backgroundColor = [UIColor redColor];
+            
+            
+            UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+4, 6, SCREENW/4-16, 30)];
+            [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
+            [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
+        
+            [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
+            [_bottomView addSubview:buyList];
+            
+            //        NSLog(@"otherLabe:%@,sc:%@",NSStringFromCGRect(_otherLabel.frame),NSStringFromCGRect(_winnerView.frame));
+        
+    }
+    else
+    
+    {
         //        添加底部视图
         UIButton *goNextButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREENW-108, 2, 100, 40)];
         [goNextButton setTitle:@"立即前往" forState:UIControlStateNormal];
@@ -294,55 +331,32 @@ static NSUInteger currentPage = 1;  //记录购买记录
         [_bottomView addSubview:goNextButton];
         UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
         title.textColor = [UIColor redColor];
-        title.text = @"下期还有好机会哟，亲";
         title.font = [UIFont boldSystemFontOfSize:20];
+        title.text = @"下期还有好机会哟，亲";
         [_bottomView addSubview:title];
-    }
-    else if(model.status ==1){
-        _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(8, 8, SCREENW-16, 5)];
-        _progress.tintColor = [UIColor yellowColor];
-        [_showShopView addSubview:_progress];
-        _countLabel = [[UILabel alloc]initWithFrame:CGRectMake(8,CGRectGetMaxY(_progress.frame)+8, SCREENW/2-16, 30)];
-        [_showShopView addSubview:_countLabel];
-        _otherLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_countLabel.frame)+8, CGRectGetMaxY(_progress.frame)+8, SCREENW/2-16, 30)];
-        _otherLabel.textColor = [UIColor redColor];
-        [_showShopView addSubview:_otherLabel];
         
+        if (model.status ==4){
         
-        _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetMaxY(_otherLabel.frame)+8);
+            
+            [_status setTitle:@"已揭晓" forState:UIControlStateNormal];
+            
+            ZLPrizeWinnerView *Prize = [[[NSBundle mainBundle]loadNibNamed:@"WinnerView" owner:nil options:nil] firstObject];
+            Prize.winner = model.revealed;
+            Prize.CalBlock = ^(){
+                //        添加计算详情按钮事件
+                ZLCalDetailViewController *cal = [[ZLCalDetailViewController alloc]init];;
+                cal.shopId = model.shopId;
+                [self.navigationController pushViewController:cal animated:YES];
+            };
+            //        self.winnerView.clipsToBounds = YES;
+            [Prize addTarget:self action:@selector(ClickWinnerButton:) forControlEvents:UIControlEventTouchUpInside];
+            [_showShopView addSubview:Prize];
+            
+            _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetHeight(Prize.frame)+8);
+            
         
+        }
         
-        
-        
-         [_status setTitle:@"进行中" forState:UIControlStateNormal];
-        _countLabel.text =[NSString stringWithFormat:@"总计需要：%ld人次",model.target_amount];
-        _otherLabel.text = [NSString stringWithFormat:@"剩余：%ld人次",model.target_amount-model.current_amount];
-        _progress.progress = ((CGFloat)model.current_amount)/model.target_amount;
-        
-       UIButton *nowBuy= [[UIButton alloc]initWithFrame:CGRectMake(4, 2, SCREENW/3+16, 40)];
-        [nowBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [nowBuy setTitle:@"立即购买" forState:UIControlStateNormal];
-//        [nowBuy addTarget:self action:@selector(nowBuyClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomView addSubview:nowBuy];
-        
-        UIButton *addBuy= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nowBuy.frame)+4, 2, SCREENW/3+16, 40)];
-        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
-//        [addBuy addTarget:self action:@selector(addBuyClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomView addSubview:addBuy];
-//        _bottomView.backgroundColor = [UIColor redColor];
-        
-        
-        UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+4, 6, SCREENW/4-16, 30)];
-        [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
-        [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
-        [addBuy setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [addBuy setTitle:@"加入清单" forState:UIControlStateNormal];
-        [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomView addSubview:buyList];
-       
-//        NSLog(@"otherLabe:%@,sc:%@",NSStringFromCGRect(_otherLabel.frame),NSStringFromCGRect(_winnerView.frame));
-    }
     
     else{
         [_status setTitle:@"倒计时" forState:UIControlStateNormal];
@@ -369,28 +383,13 @@ static NSUInteger currentPage = 1;  //记录购买记录
             
         }
         
-       
-
-        
-        
         _showShopView.frame = CGRectMake(0, CGRectGetMaxY(_exerciseNameLabel.frame), SCREENW, CGRectGetMaxY(view.frame)+8);
-//        [_showShopView addSubview:_isBuyButton];
-        //        添加底部视图
-        UIButton *goNextButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREENW-108, 2, 100, 40)];
-        [goNextButton setTitle:@"立即前往" forState:UIControlStateNormal];
-        goNextButton.titleLabel.font = [UIFont boldSystemFontOfSize:25];
-        [goNextButton setBackgroundImage:[UIImage imageNamed:@"commodity_property_no_select"] forState:UIControlStateNormal];
-        [goNextButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [goNextButton addTarget:self action:@selector(goNextTerm:) forControlEvents:UIControlEventTouchUpInside];
-        [_bottomView addSubview:goNextButton];
-        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(8, 2, SCREENW-124, 40)];
-        title.textColor = [UIColor redColor];
-        title.font = [UIFont boldSystemFontOfSize:20];
-        title.text = @"下期还有好机会哟，亲";
-        [_bottomView addSubview:title];
+
+       
         
     }
-    
+        
+    }
     [headerView addSubview:_showShopView];
     _isBuyButton = [[UIButton alloc]initWithFrame:CGRectMake(8, CGRectGetMaxY(_showShopView.frame)+8, SCREENW-16, 40)];
     [_isBuyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -440,8 +439,85 @@ static NSUInteger currentPage = 1;  //记录购买记录
 //    [self.view addSubview:bottomView];
 //    把视图拿到最上面
     [self.view bringSubviewToFront:self.bottomView];
+    _bottomView.backgroundColor = [UIColor whiteColor];
+    
 }
 
+#pragma mark 立即购买
+-(void)nowBuyClick:(UIButton *)btn{
+
+    [self addBuyOrListView:btn.currentTitle];
+
+}
+
+
+#pragma mark 添加到菜单
+- (void)addBuyClick:(UIButton *)btn{
+
+[self addBuyOrListView:btn.currentTitle];
+}
+
+//添加菜单视图
+-(void)addBuyOrListView:(NSString *)title{
+    
+    UIButton *btn = [[UIButton alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    btn.alpha = 0.1;
+    [self.view addSubview:btn];
+    [btn addTarget:self action:@selector(removeCover:) forControlEvents:UIControlEventTouchUpInside];
+    ZLBuyOraddView *buyOrAdd = [[[NSBundle mainBundle]loadNibNamed:@"ZLBuyOrAddView" owner:nil options:nil] firstObject];
+    buyOrAdd.center = CGPointMake(self.view.center.x, SCREENH-64-CGRectGetHeight(buyOrAdd.frame)/2);
+    buyOrAdd.tag = 1000;
+//    buyOrAdd.backgroundColor = [UIColor redColor];
+//    buyOrAdd.alpha =0.1;
+    
+
+    //    监听键盘弹起事件
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Notify:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    //    注册监听
+//    [buyOrAdd.number addObserver:self forKeyPath:@"editing" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [buyOrAdd.button setTitle:title forState:UIControlStateNormal];
+    [self.view addSubview:buyOrAdd];
+    
+
+}
+//删除视图
+- (void)removeCover:(UIButton *)btn{
+    
+    
+
+    [btn removeFromSuperview];
+    ZLBuyOraddView *view = [self.view viewWithTag:1000];
+    [view.number resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [view removeFromSuperview];
+   
+}
+
+-(void)Notify:(NSNotification *)noti{
+    
+    
+    //   获取键盘的高度 当键盘停止的时候
+    CGRect size=[noti.userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    //    NSLog(@"%@",noti);
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        //    self.view.frame=CGRectMake(0, -size.size.height, self.view.frame.size.width, self.view.frame.size.height) ;
+        //    向上平移
+        ZLBuyOraddView *view = [self.view viewWithTag:1000];
+        view.transform=CGAffineTransformMakeTranslation(0,size.origin.y-self.view.frame.size.height);
+    }];
+    
+}
+
+#pragma mark 进入购物车
+
+-(void)buyListClick:(UIButton *)btn{
+
+    self.tabBarController.selectedIndex = 0;
+    
+
+}
 //显示下一个项目
 - (void)goNextTerm:(UIButton *)btn{
 
@@ -549,6 +625,10 @@ static NSUInteger currentPage = 1;  //记录购买记录
     ZLUserCenterViewController *user = [[ZLUserCenterViewController alloc]init];
     user.winner = winner;
     [self.navigationController pushViewController:user animated:YES];
+}
+
+-(void)dealloc{
+[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -73,9 +73,11 @@
 //        remind = model.remain_ms;
 //        startDate = [NSDate date];
 //        closeDate = [NSDate dateWithTimeIntervalSinceNow:remind];
-        
-        NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(changeButtonTitle:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop]addTimer:time forMode:NSRunLoopCommonModes];
+        if (model.remain_ms) {
+            NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(changeButtonTitle:) userInfo:nil repeats:YES];
+            [[NSRunLoop mainRunLoop]addTimer:time forMode:NSRunLoopCommonModes];
+        }
+       
     }
 
 

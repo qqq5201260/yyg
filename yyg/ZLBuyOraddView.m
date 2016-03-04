@@ -10,12 +10,7 @@
 
 @interface ZLBuyOraddView()
 
-@property (weak, nonatomic) IBOutlet UIButton *button;
 
-@property (weak, nonatomic) IBOutlet UIButton *muinsButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *plusButton;
-@property (weak, nonatomic) IBOutlet UITextField *number;
 
 
 @end

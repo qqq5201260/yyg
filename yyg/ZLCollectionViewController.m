@@ -92,6 +92,10 @@ static NSInteger currentPage = 1;
         [[AFHTTPSessionManager YYGManager]GET:[NSString stringWithFormat:@"%@/%@",API_MAIN_GOODS_LISTS_URL,model.shopId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             ZLShopDetailModel *model1 =[ZLShopDetailModel yy_modelWithDictionary:responseObject[@"data"]];
 //            [ZLShopDetailModel
+            if (model1.remain_ms) {
+                NSDate *date = [NSDate date];
+                model.colseTime = [NSDate dateWithTimeInterval:model.remain_ms/1000+10 sinceDate:date];
+            }
             [_dataArray replaceObjectAtIndex:indexPath.row withObject:model1];
             btn.userInteractionEnabled = YES;
             [collectionView reloadItemsAtIndexPaths:@[indexPath]];
