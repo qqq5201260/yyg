@@ -308,9 +308,9 @@ static NSUInteger currentPage = 1;  //记录购买记录
             //        _bottomView.backgroundColor = [UIColor redColor];
             
             
-            UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+4, 6, SCREENW/4-16, 30)];
-            [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
-            [buyList setBackgroundImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
+            UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+16, 6, 30, 30)];
+            [buyList setImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
+            [buyList setImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
         
             [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView addSubview:buyList];
@@ -447,7 +447,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 -(void)nowBuyClick:(UIButton *)btn{
 
     [self addBuyOrListView:btn.currentTitle];
-
+    
 }
 
 
@@ -455,6 +455,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 - (void)addBuyClick:(UIButton *)btn{
 
 [self addBuyOrListView:btn.currentTitle];
+    
 }
 
 //添加菜单视图
@@ -465,6 +466,13 @@ static NSUInteger currentPage = 1;  //记录购买记录
     [self.view addSubview:btn];
     [btn addTarget:self action:@selector(removeCover:) forControlEvents:UIControlEventTouchUpInside];
     ZLBuyOraddView *buyOrAdd = [[[NSBundle mainBundle]loadNibNamed:@"ZLBuyOrAddView" owner:nil options:nil] firstObject];
+    buyOrAdd.buttonBack = ^(UIButton *sender){
+        [self removeCover:btn];
+        if ([sender.currentTitle isEqualToString:@"加入清单"]) {
+            
+        }
+        
+    };
     buyOrAdd.center = CGPointMake(self.view.center.x, SCREENH-64-CGRectGetHeight(buyOrAdd.frame)/2);
     buyOrAdd.tag = 1000;
 //    buyOrAdd.backgroundColor = [UIColor redColor];
@@ -484,8 +492,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 //删除视图
 - (void)removeCover:(UIButton *)btn{
     
-    
-
+ 
     [btn removeFromSuperview];
     ZLBuyOraddView *view = [self.view viewWithTag:1000];
     [view.number resignFirstResponder];
@@ -494,6 +501,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
    
 }
 
+//键盘弹起事件响应
 -(void)Notify:(NSNotification *)noti{
     
     
@@ -505,7 +513,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
         //    self.view.frame=CGRectMake(0, -size.size.height, self.view.frame.size.width, self.view.frame.size.height) ;
         //    向上平移
         ZLBuyOraddView *view = [self.view viewWithTag:1000];
-        view.transform=CGAffineTransformMakeTranslation(0,size.origin.y-self.view.frame.size.height);
+        view.transform=CGAffineTransformMakeTranslation(0    ,size.origin.y-self.view.frame.size.height-60);
     }];
     
 }
@@ -514,7 +522,7 @@ static NSUInteger currentPage = 1;  //记录购买记录
 
 -(void)buyListClick:(UIButton *)btn{
 
-    self.tabBarController.selectedIndex = 0;
+    self.tabBarController.selectedIndex = 4;
     
 
 }

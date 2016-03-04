@@ -47,7 +47,7 @@
     //    常用的匹配方式
     if ([fitter evaluateWithObject:self.number.text]) {
         [SVProgressHUD showSuccessWithStatus:@"添加成功"];
-        
+        self.buttonBack(sender);
     }else{
         [SVProgressHUD showErrorWithStatus:@"只能是数字，且第一位不能是0，最多可以输入7位"];
     }

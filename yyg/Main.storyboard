@@ -20,6 +20,7 @@
                         <segue destination="ptx-Yc-XoC" kind="relationship" relationship="viewControllers" id="Tcv-v6-EyZ"/>
                         <segue destination="azh-er-y0M" kind="relationship" relationship="viewControllers" id="agb-9m-S0h"/>
                         <segue destination="EW2-Pb-b7e" kind="relationship" relationship="viewControllers" id="hkG-26-YFT"/>
+                        <segue destination="E5q-fp-6dI" kind="relationship" relationship="viewControllers" id="2vg-uh-jO0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QP-xJ-vEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,6 +294,53 @@
             </objects>
             <point key="canvasLocation" x="-51.5" y="1393.5"/>
         </scene>
+        <!--购物车-->
+        <scene sceneID="kVe-ER-a6g">
+            <objects>
+                <tableViewController id="alD-Ig-FDH" customClass="ZLOrderTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ka2-kT-5ba">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="1PG-a1-cpZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zyy-Kh-0VH">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zyy-Kh-0VH" id="ZMm-UC-5IM">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购物车最多只能容纳10个宝贝哟！亲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyc-vY-Dmd">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lyc-vY-Dmd" firstAttribute="leading" secondItem="ZMm-UC-5IM" secondAttribute="leadingMargin" id="EL0-i2-lj6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lyc-vY-Dmd" secondAttribute="bottom" constant="3" id="GaF-TV-LEu"/>
+                                                <constraint firstItem="lyc-vY-Dmd" firstAttribute="top" secondItem="ZMm-UC-5IM" secondAttribute="topMargin" constant="3" id="O4C-ZI-raN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lyc-vY-Dmd" secondAttribute="trailing" id="UW4-pb-pRb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="alD-Ig-FDH" id="vjD-SL-P8f"/>
+                            <outlet property="delegate" destination="alD-Ig-FDH" id="Rn6-v2-Fgm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="购物车" id="LLH-o2-KCA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1El-3L-mCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4710" y="-155"/>
+        </scene>
         <!--夺宝-->
         <scene sceneID="V40-QX-Dq1">
             <objects>
@@ -372,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXD-jc-Ud7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3882.5" y="452.5"/>
+            <point key="canvasLocation" x="4694.5" y="452.5"/>
         </scene>
         <!--我的-->
         <scene sceneID="bSQ-57-f8M">
@@ -476,6 +524,25 @@
             </objects>
             <point key="canvasLocation" x="1510" y="-214"/>
         </scene>
+        <!--购物车-->
+        <scene sceneID="1a2-US-l8l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E5q-fp-6dI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="购物车" image="tabbar_order_normal" selectedImage="tabbar_order_sel" id="AyR-bR-ywi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T4z-vK-RpG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="alD-Ig-FDH" kind="relationship" relationship="rootViewController" id="eps-hQ-kAK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U58-I2-rE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3898" y="-155"/>
+        </scene>
     </scenes>
     <resources>
         <image name="home_invite" width="60" height="60"/>
@@ -493,5 +560,7 @@
         <image name="tabbar_findselect1" width="21" height="21"/>
         <image name="tabbar_kai" width="23" height="23"/>
         <image name="tabbar_kainormal" width="25" height="25"/>
+        <image name="tabbar_order_normal" width="21" height="19"/>
+        <image name="tabbar_order_sel" width="21" height="18"/>
     </resources>
 </document>

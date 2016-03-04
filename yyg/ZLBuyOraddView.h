@@ -15,4 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UITextField *number;
+
+@property (nonatomic,copy) void(^buttonBack)(UIButton *);
+
 @end

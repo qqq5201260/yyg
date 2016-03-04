@@ -30,14 +30,14 @@
                                 <action selector="minsAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="32F-x8-hTT"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4W-QH-WPY">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4W-QH-WPY">
                             <rect key="frame" x="75" y="12" width="90" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="90" id="F7g-q5-JPq"/>
                                 <constraint firstAttribute="height" constant="30" id="fKN-XH-20n"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
