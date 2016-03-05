@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wcb-bH-hOw">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Register View Controller-->
+        <scene sceneID="SKR-6T-Gn7">
+            <objects>
+                <viewController storyboardIdentifier="ZLRegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7lU-lK-zzJ" customClass="ZLRegisterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kPB-rH-xO3"/>
+                        <viewControllerLayoutGuide type="bottom" id="1sc-0P-3Mj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TdT-5c-VZI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroud 1" translatesAutoresizingMaskIntoConstraints="NO" id="HDg-2d-clY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-BJ-T8A">
+                                <rect key="frame" x="261" y="404" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-VJ-ch3">
+                                <rect key="frame" x="51" y="261" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="smallstrar 23" translatesAutoresizingMaskIntoConstraints="NO" id="Gbz-hP-IUh">
+                                <rect key="frame" x="40" y="528" width="45" height="50"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="smallstrar 23" translatesAutoresizingMaskIntoConstraints="NO" id="iwv-zh-3vd">
+                                <rect key="frame" x="170" y="261" width="45" height="50"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="fsb-1t-Kiw">
+                                <rect key="frame" x="248" y="34" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="CDIOS1507" translatesAutoresizingMaskIntoConstraints="NO" id="qK8-fJ-4Oo">
+                                <rect key="frame" x="61" y="71" width="188" height="28"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dian 4" translatesAutoresizingMaskIntoConstraints="NO" id="Wj7-Vt-vG8">
+                                <rect key="frame" x="116" y="47" width="7" height="15"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" background="Cell with Input" translatesAutoresizingMaskIntoConstraints="NO" id="SJo-8X-RHD">
+                                <rect key="frame" x="48" y="313" width="287" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEd-Fq-LFW">
+                                <rect key="frame" x="238" y="553" width="132" height="30"/>
+                                <state key="normal" title="已有账号，登录">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToLogin:" destination="7lU-lK-zzJ" eventType="touchUpInside" id="lzO-ai-H73"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" textAlignment="natural" minimumFontSize="17" background="Cell with Input" translatesAutoresizingMaskIntoConstraints="NO" id="rzg-im-COr">
+                                <rect key="frame" x="51" y="254" width="153" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLU-Oe-J9H">
+                                <rect key="frame" x="223" y="265" width="102" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="获取验证码"/>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-lM-uC0" customClass="Mybutton">
+                                <rect key="frame" x="40" y="419" width="315" height="43"/>
+                                <state key="normal" title="注册" backgroundImage="Cell with Input">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" background="Cell with Input" translatesAutoresizingMaskIntoConstraints="NO" id="erW-gC-1vJ">
+                                <rect key="frame" x="49" y="177" width="287" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HDg-2d-clY" firstAttribute="top" secondItem="kPB-rH-xO3" secondAttribute="bottom" id="0wf-gS-3DI"/>
+                            <constraint firstItem="HDg-2d-clY" firstAttribute="leading" secondItem="TdT-5c-VZI" secondAttribute="leading" id="bpb-DO-CHW"/>
+                            <constraint firstItem="1sc-0P-3Mj" firstAttribute="top" secondItem="HDg-2d-clY" secondAttribute="bottom" id="co6-sd-kqT"/>
+                            <constraint firstAttribute="trailing" secondItem="HDg-2d-clY" secondAttribute="trailing" id="qzW-8b-uRa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Crb-e2-r4u"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="dian" destination="Wj7-Vt-vG8" id="4pJ-cd-o6m"/>
+                        <outlet property="logo" destination="qK8-fJ-4Oo" id="ARK-k4-UM3"/>
+                        <outlet property="password" destination="SJo-8X-RHD" id="Tfm-vn-cU1"/>
+                        <outlet property="shape1" destination="fsb-1t-Kiw" id="siU-j7-wH1"/>
+                        <outlet property="shape2" destination="Gbz-hP-IUh" id="IQi-V2-e33"/>
+                        <outlet property="shape3" destination="0wv-BJ-T8A" id="OLs-DS-cnw"/>
+                        <outlet property="shape4" destination="iwv-zh-3vd" id="Ucg-nw-2w4"/>
+                        <outlet property="shape5" destination="Q2f-VJ-ch3" id="9mh-FE-2kB"/>
+                        <outlet property="username" destination="erW-gC-1vJ" id="KXk-G0-uNS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZf-Sh-RW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1295.5" y="466.5"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="PxN-Ey-VJK">
+            <objects>
+                <viewController storyboardIdentifier="ZLLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wcb-bH-hOw" customClass="ZLLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jWw-7X-QYg"/>
+                        <viewControllerLayoutGuide type="bottom" id="EZT-W8-oS8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0V7-Jp-wdc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroud 1" translatesAutoresizingMaskIntoConstraints="NO" id="qey-8f-LeY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbl-wH-Gpm">
+                                <rect key="frame" x="261" y="404" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="Fon-2Q-4fk">
+                                <rect key="frame" x="51" y="261" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="smallstrar 23" translatesAutoresizingMaskIntoConstraints="NO" id="HhT-IW-Qvu">
+                                <rect key="frame" x="44" y="517" width="45" height="50"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="smallstrar 23" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-2M-ilJ">
+                                <rect key="frame" x="170" y="261" width="45" height="50"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Star 1" translatesAutoresizingMaskIntoConstraints="NO" id="jrb-07-LpF">
+                                <rect key="frame" x="248" y="34" width="87" height="91"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="CDIOS1507" translatesAutoresizingMaskIntoConstraints="NO" id="b00-2j-9nv">
+                                <rect key="frame" x="61" y="71" width="188" height="28"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="dian 4" translatesAutoresizingMaskIntoConstraints="NO" id="xNN-FI-urD">
+                                <rect key="frame" x="116" y="47" width="7" height="15"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" background="Cell with Input" translatesAutoresizingMaskIntoConstraints="NO" id="IwE-cP-rYl">
+                                <rect key="frame" x="48" y="284" width="287" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXf-N4-qTn">
+                                <rect key="frame" x="238" y="553" width="132" height="30"/>
+                                <state key="normal" title="无账号，注册">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7lU-lK-zzJ" kind="push" id="T3A-vr-ypW"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" background="Cell with Input" translatesAutoresizingMaskIntoConstraints="NO" id="Tt3-v6-Ouf">
+                                <rect key="frame" x="49" y="184" width="287" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nr-HQ-tmB" customClass="Mybutton">
+                                <rect key="frame" x="40" y="380" width="315" height="43"/>
+                                <state key="normal" backgroundImage="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qey-8f-LeY" secondAttribute="trailing" id="b2v-KO-NnG"/>
+                            <constraint firstItem="qey-8f-LeY" firstAttribute="leading" secondItem="0V7-Jp-wdc" secondAttribute="leading" id="enf-b9-G6Z"/>
+                            <constraint firstItem="EZT-W8-oS8" firstAttribute="top" secondItem="qey-8f-LeY" secondAttribute="bottom" id="jIs-JC-oNm"/>
+                            <constraint firstItem="qey-8f-LeY" firstAttribute="top" secondItem="jWw-7X-QYg" secondAttribute="bottom" id="u3u-XL-tVD"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="dian" destination="xNN-FI-urD" id="GeV-rp-zZd"/>
+                        <outlet property="logo" destination="b00-2j-9nv" id="Nfg-YV-Wto"/>
+                        <outlet property="password" destination="IwE-cP-rYl" id="Z7a-Up-mSr"/>
+                        <outlet property="shape1" destination="jrb-07-LpF" id="i0D-bp-PQj"/>
+                        <outlet property="shape2" destination="HhT-IW-Qvu" id="gX7-DL-ZoK"/>
+                        <outlet property="shape3" destination="Xbl-wH-Gpm" id="Zjc-8f-pjl"/>
+                        <outlet property="shape4" destination="DaM-2M-ilJ" id="DfP-bj-80F"/>
+                        <outlet property="shape5" destination="Fon-2Q-4fk" id="deW-oq-YZG"/>
+                        <outlet property="username" destination="Tt3-v6-Ouf" id="mxg-1u-401"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ot0-oe-AOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897.5" y="473.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Button" width="315" height="43"/>
+        <image name="CDIOS1507" width="188" height="28"/>
+        <image name="Cell with Input" width="375" height="46"/>
+        <image name="Star 1" width="87" height="91"/>
+        <image name="backgroud 1" width="375" height="667"/>
+        <image name="dian 4" width="7" height="8"/>
+        <image name="smallstrar 23" width="45" height="50"/>
+    </resources>
+</document>

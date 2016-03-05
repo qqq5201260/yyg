@@ -94,18 +94,19 @@
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFE-a7-i33">
-                                                    <rect key="frame" x="92" y="21" width="63" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID：空" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJn-a9-AZA">
                                                     <rect key="frame" x="92" y="47" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8e-ym-59G">
+                                                    <rect key="frame" x="92" y="14" width="46" height="30"/>
+                                                    <state key="normal" title="未登录"/>
+                                                    <connections>
+                                                        <segue destination="nF1-Wy-moh" kind="push" id="4eM-bk-B7R"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.94901967050000002" green="0.023529414089999999" blue="0.15294118230000001" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
@@ -293,6 +294,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r74-ai-FDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-51.5" y="1393.5"/>
+        </scene>
+        <!--loginAndRegister-->
+        <scene sceneID="RV9-Xe-zt8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="loginAndRegister" id="nF1-Wy-moh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="登录" id="VXA-pB-vr0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUg-nu-UsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316.5" y="1254"/>
         </scene>
         <!--购物车-->
         <scene sceneID="kVe-ER-a6g">
@@ -557,7 +568,7 @@
         <image name="tab_sunshine" width="22" height="22"/>
         <image name="tab_sunshine_on" width="22" height="22"/>
         <image name="tabbar_findnormal" width="25" height="21"/>
-        <image name="tabbar_findselect1" width="21" height="21"/>
+        <image name="tabbar_findselect1" width="25" height="21"/>
         <image name="tabbar_kai" width="23" height="23"/>
         <image name="tabbar_kainormal" width="25" height="25"/>
         <image name="tabbar_order_normal" width="21" height="19"/>

@@ -7,7 +7,7 @@
 //
 
 #import "ZLCustomTableViewController.h"
-
+#import "ZLLoginViewController.h"
 @interface ZLCustomTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *customTableView;
 
@@ -31,6 +31,10 @@
 }
 
 #pragma mark - Table view data source
+
+
+
+
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Incomplete implementation, return the number of sections
@@ -102,14 +106,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    ZLLoginViewController *destination = segue.destinationViewController;
+    destination.hidesBottomBarWhenPushed = YES;
+    
 }
-*/
+
 
 @end
