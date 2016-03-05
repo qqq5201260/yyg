@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *shape3;
 @property (weak, nonatomic) IBOutlet UIImageView *shape4;
 @property (weak, nonatomic) IBOutlet UIImageView *shape5;
-@property (weak, nonatomic) IBOutlet UIImageView *shape6;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UIImageView *dian;
@@ -37,10 +37,34 @@
 
 - (void)viewDidLoad {
         [super viewDidLoad];
+//        [self.view sendSubviewToBack:]
         [self animateSet];
         
         // Do any additional setup after loading the view, typically from a nib.
-    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark 设置启动动画
+
 - (void)animateSet{
         //    设置缩放比例
         for (UIImageView *ima in self.shapesArray) {
@@ -65,7 +89,7 @@
         }
         //    设置初始位移
         self.logo.transform = CGAffineTransformMakeTranslation(-200, 0);
-        self.dian.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.view.frame), 0);
+        self.dian.transform = CGAffineTransformMakeTranslation(0, -150);
         
         [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:1 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.logo.transform = CGAffineTransformIdentity;

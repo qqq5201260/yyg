@@ -4,4 +4,5 @@ pod'AFNetworking'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
+pod 'BmobSDK'
 
