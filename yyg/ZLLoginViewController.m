@@ -7,7 +7,8 @@
 //
 
 #import "ZLLoginViewController.h"
-
+#import <BmobSDK/Bmob.h>
+#import "MD5Tool.h"
 @interface ZLLoginViewController ()
 @property (nonatomic,strong) NSArray *shapesArray;
 @property (weak, nonatomic) IBOutlet UIImageView *shape1;
@@ -37,8 +38,64 @@
     [super viewDidLoad];
     [self animateSet];
     
+    [_username becomeFirstResponder];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
+
+- (IBAction)loginButton:(UIButton *)sender {
+    
+    if (_username.text.length==0 || _password.text.length==0) {
+        [SVProgressHUD showErrorWithStatus:@"请输入账户和密码"];
+        return;
+    }
+    
+    NSString *name = _username.text;
+   NSString *pwd = [MD5Tool MD5StringFromString:_password.text];
+//    user si
+    [BmobUser loginInbackgroundWithAccount:name andPassword:pwd block:^(BmobUser *user, NSError *error) {
+        
+        if (user) {
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+//            登录成功发送一个通知,便于个人页面显示
+            [[NSNotificationCenter defaultCenter]postNotificationName:USER_REFRESH_NOTICE object:nil userInfo:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+        else{
+            NSString *msg=nil;
+            if (error.code == 101){
+        msg = @"账号或密码错误";
+        
+            }
+            else {}
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+        
+    }];
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)animateSet{
     //    设置缩放比例
     for (UIImageView *ima in self.shapesArray) {

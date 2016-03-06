@@ -12,6 +12,11 @@
 		0D1209461C8316550038C9CF /* ZLShareDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1209441C8316550038C9CF /* ZLShareDetailViewController.m */; };
 		0D1209471C8316550038C9CF /* ZLShareDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1209451C8316550038C9CF /* ZLShareDetailViewController.xib */; };
 		0D12094A1C83310B0038C9CF /* ZLSharePicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1209491C83310B0038C9CF /* ZLSharePicModel.m */; };
+		0D5988E41C8B19E8009BABC2 /* OSinaAuthTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5988E31C8B19E8009BABC2 /* OSinaAuthTool.m */; };
+		0D5988E71C8B19F7009BABC2 /* OSinaAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5988E61C8B19F7009BABC2 /* OSinaAuthModel.m */; };
+		0D5988EB1C8B1ACF009BABC2 /* OAuthSinaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5988E91C8B1ACF009BABC2 /* OAuthSinaViewController.m */; };
+		0D5988EC1C8B1ACF009BABC2 /* OAuthSinaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5988EA1C8B1ACF009BABC2 /* OAuthSinaViewController.xib */; };
+		0D7172741C8ACDB80056D213 /* MD5Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7172731C8ACDB80056D213 /* MD5Tool.m */; };
 		0D7437FD1C8A80EB005B8891 /* ZLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7437FC1C8A80EB005B8891 /* ZLLoginViewController.m */; };
 		0D7438001C8A8102005B8891 /* ZLRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7437FF1C8A8102005B8891 /* ZLRegisterViewController.m */; };
 		0D7438021C8A812A005B8891 /* loginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7438011C8A812A005B8891 /* loginAndRegister.storyboard */; };
@@ -81,6 +86,15 @@
 		0D1209451C8316550038C9CF /* ZLShareDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLShareDetailViewController.xib; sourceTree = "<group>"; };
 		0D1209481C83310B0038C9CF /* ZLSharePicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLSharePicModel.h; sourceTree = "<group>"; };
 		0D1209491C83310B0038C9CF /* ZLSharePicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLSharePicModel.m; sourceTree = "<group>"; };
+		0D5988E21C8B19E8009BABC2 /* OSinaAuthTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSinaAuthTool.h; sourceTree = "<group>"; };
+		0D5988E31C8B19E8009BABC2 /* OSinaAuthTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSinaAuthTool.m; sourceTree = "<group>"; };
+		0D5988E51C8B19F7009BABC2 /* OSinaAuthModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSinaAuthModel.h; sourceTree = "<group>"; };
+		0D5988E61C8B19F7009BABC2 /* OSinaAuthModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSinaAuthModel.m; sourceTree = "<group>"; };
+		0D5988E81C8B1ACF009BABC2 /* OAuthSinaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSinaViewController.h; sourceTree = "<group>"; };
+		0D5988E91C8B1ACF009BABC2 /* OAuthSinaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthSinaViewController.m; sourceTree = "<group>"; };
+		0D5988EA1C8B1ACF009BABC2 /* OAuthSinaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthSinaViewController.xib; sourceTree = "<group>"; };
+		0D7172721C8ACDB80056D213 /* MD5Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Tool.h; sourceTree = "<group>"; };
+		0D7172731C8ACDB80056D213 /* MD5Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Tool.m; sourceTree = "<group>"; };
 		0D7437FB1C8A80EB005B8891 /* ZLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLLoginViewController.h; sourceTree = "<group>"; };
 		0D7437FC1C8A80EB005B8891 /* ZLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLLoginViewController.m; sourceTree = "<group>"; };
 		0D7437FE1C8A8102005B8891 /* ZLRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLRegisterViewController.h; sourceTree = "<group>"; };
@@ -193,6 +207,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5988ED1C8B1AD9009BABC2 /* Oatuths */ = {
+			isa = PBXGroup;
+			children = (
+				0D5988EE1C8B1AF5009BABC2 /* sina */,
+			);
+			name = Oatuths;
+			sourceTree = "<group>";
+		};
+		0D5988EE1C8B1AF5009BABC2 /* sina */ = {
+			isa = PBXGroup;
+			children = (
+				0D5988E51C8B19F7009BABC2 /* OSinaAuthModel.h */,
+				0D5988E81C8B1ACF009BABC2 /* OAuthSinaViewController.h */,
+				0D5988E91C8B1ACF009BABC2 /* OAuthSinaViewController.m */,
+				0D5988EA1C8B1ACF009BABC2 /* OAuthSinaViewController.xib */,
+				0D5988E61C8B19F7009BABC2 /* OSinaAuthModel.m */,
+				0D5988E21C8B19E8009BABC2 /* OSinaAuthTool.h */,
+				0D5988E31C8B19E8009BABC2 /* OSinaAuthTool.m */,
+			);
+			name = sina;
+			sourceTree = "<group>";
+		};
+		0D7172711C8ACDA50056D213 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0D7172721C8ACDB80056D213 /* MD5Tool.h */,
+				0D7172731C8ACDB80056D213 /* MD5Tool.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		4ECFCB55A360A193E1E54B26 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +345,8 @@
 		BC97E27A1C79B9CF007A1C49 /* yyg */ = {
 			isa = PBXGroup;
 			children = (
+				0D5988ED1C8B1AD9009BABC2 /* Oatuths */,
+				0D7172711C8ACDA50056D213 /* Tools */,
 				BC7B7F2E1C7C6E320078CCE0 /* Utils */,
 				BC7B7E9A1C7C2C760078CCE0 /* Views */,
 				BC7B7E871C7BECDF0078CCE0 /* Models */,
@@ -453,6 +500,7 @@
 				BC7B4FF31C82CF97000F7CE7 /* ZLShareTableViewCell.xib in Resources */,
 				BC8804D91C8298D400CB88D8 /* ZLShopAllTimesTableViewCell.xib in Resources */,
 				BCDD1EA41C7B3B2F00241DE1 /* Main.storyboard in Resources */,
+				0D5988EC1C8B1ACF009BABC2 /* OAuthSinaViewController.xib in Resources */,
 				0DFDB03A1C844B2D0053BB14 /* ZLOpenResultCollectionViewCell.xib in Resources */,
 				0D1209471C8316550038C9CF /* ZLShareDetailViewController.xib in Resources */,
 				0D7438021C8A812A005B8891 /* loginAndRegister.storyboard in Resources */,
@@ -521,12 +569,14 @@
 				BCDD1E9E1C7B34F700241DE1 /* ZLCustomTableViewController.m in Sources */,
 				BC97E2801C79B9CF007A1C49 /* AppDelegate.m in Sources */,
 				0D78A0841C8987980042CA19 /* ZLOrderTableViewController.m in Sources */,
+				0D5988E41C8B19E8009BABC2 /* OSinaAuthTool.m in Sources */,
 				BC610E4A1C7F223500EF2652 /* ZLCalDetailViewController.m in Sources */,
 				BC0BB8E01C8085D700A55676 /* ZLUserBuyTableViewCell.m in Sources */,
 				0D07BBE81C847EAE004CEF2A /* ZLCollectionViewController.m in Sources */,
 				0DB394911C85D660006AAEED /* ZLFindTitleModel.m in Sources */,
 				0D1209411C8312020038C9CF /* ZLShareViewController.m in Sources */,
 				BC7B7F281C7C55680078CCE0 /* ZLBuyRecodeModel.m in Sources */,
+				0D7172741C8ACDB80056D213 /* MD5Tool.m in Sources */,
 				0D78A0801C897D2A0042CA19 /* ZLOrderTableViewCell.m in Sources */,
 				0DFDB0391C844B2D0053BB14 /* ZLOpenResultCollectionViewCell.m in Sources */,
 				BCDD1E941C7B342800241DE1 /* ZLFindViewController.m in Sources */,
@@ -555,8 +605,10 @@
 				0D7820011C8915920035E229 /* ZLBuyOraddView.m in Sources */,
 				BC7B7F2C1C7C5D820078CCE0 /* ZLDetailViewController.m in Sources */,
 				BCDD1EA21C7B356300241DE1 /* ZLMainViewController.m in Sources */,
+				0D5988EB1C8B1ACF009BABC2 /* OAuthSinaViewController.m in Sources */,
 				BC7B7F311C7C6E7E0078CCE0 /* AFHTTPSessionManager+Util.m in Sources */,
 				0D1209461C8316550038C9CF /* ZLShareDetailViewController.m in Sources */,
+				0D5988E71C8B19F7009BABC2 /* OSinaAuthModel.m in Sources */,
 				BC7B4FF21C82CF97000F7CE7 /* ZLShareTableViewCell.m in Sources */,
 				0D7438001C8A8102005B8891 /* ZLRegisterViewController.m in Sources */,
 			);
@@ -662,7 +714,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3ADA197E348731F3A74882B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/yyg/ZLPrefixHeader.pch";
@@ -677,7 +729,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85E2C42F3FA162C2AC249D09 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/yyg/ZLPrefixHeader.pch";

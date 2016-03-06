@@ -12,6 +12,7 @@
 //包含头文件
 #import "BmobObject.h"
 #import "BmobFile.h"
+#import "BmobProFile.h"
 #import "BmobGeoPoint.h"
 #import "BmobQuery.h"
 #import "BmobUser.h"

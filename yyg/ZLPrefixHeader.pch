@@ -19,6 +19,7 @@
 #include <UIImageView+WebCache.h>
 #include <UIButton+WebCache.h>
 
+
 #include <MJRefresh.h>
 //添加自定义类别
 #include "AFHTTPSessionManager+Util.h"
@@ -69,4 +70,8 @@
 
 #define SCREENW [[UIScreen mainScreen]bounds].size.width
 #define SCREENH [[UIScreen mainScreen]bounds].size.height
+
+
+//刷新用户界面
+#define USER_REFRESH_NOTICE @"UserRefreshNotice"
 #endif /* ZLPrefixHeader_pch */
