@@ -341,51 +341,48 @@
             <point key="canvasLocation" x="-316.5" y="1254"/>
         </scene>
         <!--购物车-->
-        <scene sceneID="kVe-ER-a6g">
+        <scene sceneID="nRD-Wl-icQ">
             <objects>
-                <tableViewController id="alD-Ig-FDH" customClass="ZLOrderTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ka2-kT-5ba">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                <viewController id="mNh-Y0-a8r" customClass="ZLOrderTableViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N5q-PD-xrY"/>
+                        <viewControllerLayoutGuide type="bottom" id="zp2-SF-fS9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eTp-SJ-Fwc">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBN-Ro-vRL">
+                                <rect key="frame" x="138" y="257" width="100" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="93O-C6-h06"/>
+                                    <constraint firstAttribute="height" constant="40" id="bQy-5i-eeR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="立即夺宝">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="gotoDuobao:" destination="mNh-Y0-a8r" eventType="touchUpInside" id="fF5-7d-9SJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="1PG-a1-cpZ">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zyy-Kh-0VH">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zyy-Kh-0VH" id="ZMm-UC-5IM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购物车最多只能容纳10个宝贝哟！亲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyc-vY-Dmd">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="lyc-vY-Dmd" firstAttribute="leading" secondItem="ZMm-UC-5IM" secondAttribute="leadingMargin" id="EL0-i2-lj6"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lyc-vY-Dmd" secondAttribute="bottom" constant="3" id="GaF-TV-LEu"/>
-                                                <constraint firstItem="lyc-vY-Dmd" firstAttribute="top" secondItem="ZMm-UC-5IM" secondAttribute="topMargin" constant="3" id="O4C-ZI-raN"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lyc-vY-Dmd" secondAttribute="trailing" id="UW4-pb-pRb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="alD-Ig-FDH" id="vjD-SL-P8f"/>
-                            <outlet property="delegate" destination="alD-Ig-FDH" id="Rn6-v2-Fgm"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="购物车" id="LLH-o2-KCA"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1El-3L-mCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="dBN-Ro-vRL" firstAttribute="centerX" secondItem="eTp-SJ-Fwc" secondAttribute="centerX" id="dAu-Lx-dfe"/>
+                            <constraint firstItem="dBN-Ro-vRL" firstAttribute="centerY" secondItem="eTp-SJ-Fwc" secondAttribute="centerY" id="qTK-5l-k4a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="购物车" id="VIm-1c-aSm"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="goToDuoBao" destination="dBN-Ro-vRL" id="1Yf-tX-5cP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qot-GA-hiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4710" y="-155"/>
+            <point key="canvasLocation" x="4524" y="-95"/>
         </scene>
         <!--夺宝-->
         <scene sceneID="V40-QX-Dq1">
@@ -576,18 +573,18 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E5q-fp-6dI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="购物车" image="tabbar_order_normal" selectedImage="tabbar_order_sel" id="AyR-bR-ywi"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T4z-vK-RpG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="T4z-vK-RpG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="alD-Ig-FDH" kind="relationship" relationship="rootViewController" id="eps-hQ-kAK"/>
+                        <segue destination="mNh-Y0-a8r" kind="relationship" relationship="rootViewController" id="diF-zD-NpK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U58-I2-rE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3898" y="-155"/>
+            <point key="canvasLocation" x="3892" y="-185"/>
         </scene>
     </scenes>
     <resources>

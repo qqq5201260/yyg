@@ -9,12 +9,18 @@
 #import "CollectionViewCell.h"
 @interface CollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *shopImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *shopTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addListButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *shopProgressView;
 
 @end
 @implementation CollectionViewCell
+- (IBAction)addShopOrder:(UIButton *)sender {
+    
+    self.addOrderModel(_shopImageView.image);
+    
+}
 
 - (void)awakeFromNib {
     // Initialization code

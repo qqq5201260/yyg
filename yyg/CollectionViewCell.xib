@@ -38,6 +38,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9f-jv-8m9">
                         <rect key="frame" x="61" y="163" width="76" height="20"/>
                         <state key="normal" title="加入清单"/>
+                        <connections>
+                            <action selector="addShopOrder:" destination="gTV-IL-0wX" eventType="touchUpInside" id="atv-XW-1Is"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

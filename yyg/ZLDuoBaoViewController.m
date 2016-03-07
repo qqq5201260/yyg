@@ -11,6 +11,7 @@
 #import "ZLMessageModel.h"
 #import "CollectionViewCell.h"
 #import "ZLDetailViewController.h"
+#import "ZLLoginViewController.h"
 static NSUInteger congratulationButtonCurrent = 0;
 static NSUInteger bannersPageControlCurrent = 0;
 static NSUInteger loadDetailShopingPageCurrent = 1;
@@ -231,7 +232,33 @@ static NSUInteger loadDetailShopingPageCurrent = 1;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    cell.model = _shopListArray[indexPath.row];
+    
+  ZLMainGoodsModel *model  = _shopListArray[indexPath.row];
+    cell.model= model;
+    cell.addOrderModel=^(UIImage *im){
+        if (![BmobUser getCurrentUser]) {
+            [SVProgressHUD showErrorWithStatus:@"亲，还没有登录"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                ZLLoginViewController *login = [[ZLLoginViewController alloc]init];
+                [self.navigationController pushViewController:login animated:YES];
+                
+            });
+        
+            
+        }else{
+            ZLOrderModel *order = [[ZLOrderModel alloc]initWithUserId:[BmobUser getCurrentUser].username shopId:model.shopId dataIcon:UIImagePNGRepresentation(im) shopName:model.goods.name BuyCount:model.target_amount BuyCurrent:model.target_amount-model.current_amount userBuyCount:(model.target_amount-model.current_amount)/100+1];
+            
+            if ([[ZLFMDBHelp FMDBHelp]addModel:order]){
+            
+                [SVProgressHUD showSuccessWithStatus:@"订单添加成功"];
+            }
+            else{
+                [SVProgressHUD showErrorWithStatus:@"添加失败"];
+            
+            }
+        }
+    
+    };
     cell.layer.borderWidth =1;
     
     cell.backgroundColor = [UIColor greenColor];

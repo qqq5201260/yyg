@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ZLOrderModel.h"
 @interface ZLOrderTableViewCell : UITableViewCell
+
+@property (nonatomic,strong) ZLOrderModel *model;
 
 @end

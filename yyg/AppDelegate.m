@@ -19,6 +19,7 @@
  */
 #import "AppDelegate.h"
 #import <BmobSDK/Bmob.h>
+#import "ZLFMDBHelp.h"
 @interface AppDelegate ()
 
 @end
@@ -29,6 +30,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // 向bmob服务器注册你自己的应用
     [Bmob registerWithAppKey:@"1891b2a0dc45764948491db62a3e9798"];
+    [ZLFMDBHelp FMDBHelp];
     // Override point for customization after application launch.
     return YES;
 }

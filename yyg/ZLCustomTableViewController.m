@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getNotifyAndDoChangeUserIcon:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNotifyAndDoChangeUserIcon:) name:USER_REFRESH_NOTICE object:nil];
 }
 

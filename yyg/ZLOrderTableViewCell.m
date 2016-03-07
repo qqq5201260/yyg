@@ -40,7 +40,7 @@
         number = 1;
     }
     self.numberText.text = [NSString stringWithFormat:@"%ld",number];
-    
+    [[ZLFMDBHelp FMDBHelp]updateOrder:_model.userId shopId:_model.shopId userBuyCount:number lastCout:_model.BuyCurrent];
     
 }
 - (IBAction)addButtonAction:(UIButton *)sender {
@@ -51,7 +51,18 @@
         number = 9999999;
     }
     self.numberText.text = [NSString stringWithFormat:@"%ld",number];
+    [[ZLFMDBHelp FMDBHelp]updateOrder:_model.userId shopId:_model.shopId userBuyCount:number lastCout:_model.BuyCurrent];
     
 }
+-(void)setModel:(ZLOrderModel *)model{
+    _model = model;
+    _orderIcon.image = [UIImage imageWithData:model.dataIcon];
+    _orderName.text = model.shopName;
+    _orderCount.text = [NSString stringWithFormat:@"总需:%ld",model.BuyCount];
+    _surplus.text = [NSString stringWithFormat:@"%ld",model.BuyCurrent];
+    _numberText.text = [NSString stringWithFormat:@"%ld",model.userBuyCount<model.BuyCurrent?model.userBuyCount:model.BuyCurrent];
+    
 
+
+}
 @end

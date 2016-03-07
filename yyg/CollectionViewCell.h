@@ -10,6 +10,9 @@
 #import "ZLMainGoodsModel.h"
 @interface CollectionViewCell : UICollectionViewCell
 
+
 @property (nonatomic,strong) ZLMainGoodsModel *model;
+
+@property (nonatomic,copy) void(^addOrderModel)(UIImage *);
 
 @end

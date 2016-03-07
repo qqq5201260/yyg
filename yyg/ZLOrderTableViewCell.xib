@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" customClass="ZLOrderTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="131" id="KGk-i7-Jjw" customClass="ZLOrderTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="341" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cln-hM-dKG">
-                        <rect key="frame" x="232" y="65" width="31" height="17"/>
+                        <rect key="frame" x="212" y="65" width="31" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="31" id="2sa-gb-u0L"/>
                         </constraints>
@@ -57,9 +57,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c0-dU-4Jc">
-                        <rect key="frame" x="263" y="65" width="35" height="17"/>
+                        <rect key="frame" x="243" y="65" width="50" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="B0T-ae-xMr"/>
+                            <constraint firstAttribute="width" constant="50" id="B0T-ae-xMr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,7 +120,7 @@
                     <constraint firstItem="cln-hM-dKG" firstAttribute="top" secondItem="TId-WW-KbW" secondAttribute="top" id="IOX-19-MMU"/>
                     <constraint firstItem="pnd-UJ-wED" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="InZ-P5-vSO"/>
                     <constraint firstItem="TId-WW-KbW" firstAttribute="leading" secondItem="Rfi-ek-5yw" secondAttribute="leading" id="Jec-pA-E8z"/>
-                    <constraint firstItem="uBZ-6P-1dF" firstAttribute="leading" secondItem="7c0-dU-4Jc" secondAttribute="trailing" id="L9i-Z5-zcL"/>
+                    <constraint firstItem="uBZ-6P-1dF" firstAttribute="leading" secondItem="7c0-dU-4Jc" secondAttribute="trailing" constant="5" id="L9i-Z5-zcL"/>
                     <constraint firstItem="TId-WW-KbW" firstAttribute="top" secondItem="Rfi-ek-5yw" secondAttribute="bottom" constant="8" id="O9i-dY-ff7"/>
                     <constraint firstAttribute="trailingMargin" secondItem="uBZ-6P-1dF" secondAttribute="trailing" constant="4" id="X1d-0l-Opc"/>
                     <constraint firstItem="PSu-sW-3Eb" firstAttribute="centerY" secondItem="LGz-ea-IPS" secondAttribute="centerY" id="YiU-pq-fl4"/>

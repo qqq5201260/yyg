@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZLOrderTableViewController : UITableViewController
+@interface ZLOrderTableViewController : UIViewController
 
 @end

@@ -282,7 +282,7 @@
                   moduleName = "yyg"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/czl/Documents/%E7%BD%91%E7%BB%9C%E9%98%B6%E6%AE%B5/%E4%B8%80%E5%85%83%E8%B4%AD%E9%A1%B9%E7%9B%AE/yyg/OAuthSinaViewController.m"
-                  timestampString = "478960972.115158"
+                  timestampString = "479028091.606755"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "129"
@@ -297,7 +297,7 @@
                   moduleName = "yyg"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/czl/Documents/%E7%BD%91%E7%BB%9C%E9%98%B6%E6%AE%B5/%E4%B8%80%E5%85%83%E8%B4%AD%E9%A1%B9%E7%9B%AE/yyg/OAuthSinaViewController.m"
-                  timestampString = "478960972.115412"
+                  timestampString = "479028091.606975"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "129"
@@ -320,6 +320,22 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "-getAccessTokenWithCode:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "yyg/ZLDuoBaoViewController.m"
+            timestampString = "479026113.746282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
