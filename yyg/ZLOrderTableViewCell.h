@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong) ZLOrderModel *model;
 
+@property (nonatomic,copy) void(^changeNumber)(BOOL);
+
 @end

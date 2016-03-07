@@ -38,7 +38,11 @@
     number--;
     if (number<=1) {
         number = 1;
+    }else{
+     self.changeNumber(NO);
     }
+   
+    _model.userBuyCount = number;
     self.numberText.text = [NSString stringWithFormat:@"%ld",number];
     [[ZLFMDBHelp FMDBHelp]updateOrder:_model.userId shopId:_model.shopId userBuyCount:number lastCout:_model.BuyCurrent];
     
@@ -47,9 +51,14 @@
     
     NSInteger number = [self.numberText.text integerValue];
     number++;
-    if (number>=9999999) {
-        number = 9999999;
+    if (number>=_model.BuyCurrent) {
+        number = _model.BuyCurrent;
+    }else{
+    self.changeNumber(YES);
     }
+    
+    
+    _model.userBuyCount = number;
     self.numberText.text = [NSString stringWithFormat:@"%ld",number];
     [[ZLFMDBHelp FMDBHelp]updateOrder:_model.userId shopId:_model.shopId userBuyCount:number lastCout:_model.BuyCurrent];
     

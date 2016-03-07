@@ -63,7 +63,7 @@
 
 }
 
--(NSArray *)queryUid:(NSString *)uid{
+-(NSMutableArray *)queryUid:(NSString *)uid{
     NSMutableArray *queryArray = [NSMutableArray array];
     if (_DB && [_DB open]) {
         NSString *sql = @"select * from Orders where userId=?";
@@ -128,12 +128,12 @@
 
 }
 
--(BOOL)removeOrder:(NSString *)uid shopId:(NSString *)shopId{
+-(BOOL)removeOrder:(NSString *)orderId{
 
     BOOL isSuccess = NO;
     if (_DB && [_DB open]) {
-        NSString *sql = @"DELETE FROM Orders WHERE where userId=? and shopId=?";
-        isSuccess = [_DB executeUpdate:sql,uid,shopId];
+        NSString *sql = @"DELETE FROM Orders WHERE orderId=?";
+        isSuccess = [_DB executeUpdate:sql,orderId];
         [_DB close];
     }
     return isSuccess;

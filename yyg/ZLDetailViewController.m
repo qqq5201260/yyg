@@ -15,6 +15,7 @@
 #import "ZLShopPostTimesTableViewController.h"
 #import "ZLShareViewController.h"
 #import "ZLBuyOraddView.h"
+#import "ZLLoginViewController.h"
 @interface ZLDetailViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *showScrollView;
 //@property (weak, nonatomic) IBOutlet UIPageControl *showPageControl;
@@ -69,7 +70,19 @@ static NSUInteger currentPage = 1;  //记录购买记录
 }
 //static CGFloat lastTime=999999999;
 - (void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [super viewWillAppear:animated];
+    if (_isBuyButton) {
+        if ([BmobUser getCurrentUser]) {
+            _isBuyButton.userInteractionEnabled = NO;
+            [_isBuyButton setTitle:@"你还没有参与" forState:UIControlStateNormal];
+        }else{
+            [_isBuyButton setTitle:@"登录" forState:UIControlStateNormal];
+            _isBuyButton.userInteractionEnabled = YES;
+            [_isBuyButton addTarget:self action:@selector(loginOnClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }
+    }
+    
 
 }
 - (void)viewDidLoad {
@@ -308,13 +321,16 @@ static NSUInteger currentPage = 1;  //记录购买记录
             //        _bottomView.backgroundColor = [UIColor redColor];
             
             
-            UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+16, 6, 30, 30)];
+            UIButton *buyList= [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(addBuy.frame)+16, 6, 40, 30)];
             [buyList setImage:[UIImage imageNamed:@"tab_home"] forState:UIControlStateNormal];
             [buyList setImage:[UIImage imageNamed:@"tab_home_on"] forState:UIControlStateNormal];
-        
+            NSInteger count = [[ZLFMDBHelp FMDBHelp] queryUid:[BmobUser getCurrentUser].username].count;
+            [buyList setTitle:[NSString stringWithFormat:@"%@",count==0?@"":@(count)] forState:UIControlStateNormal];
+             [buyList setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+             buyList.tag = 101;
             [buyList addTarget:self action:@selector(buyListClick:) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView addSubview:buyList];
-            
+        
             //        NSLog(@"otherLabe:%@,sc:%@",NSStringFromCGRect(_otherLabel.frame),NSStringFromCGRect(_winnerView.frame));
         
     }
@@ -394,10 +410,20 @@ static NSUInteger currentPage = 1;  //记录购买记录
     _isBuyButton = [[UIButton alloc]initWithFrame:CGRectMake(8, CGRectGetMaxY(_showShopView.frame)+8, SCREENW-16, 40)];
     [_isBuyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_isBuyButton setBackgroundImage:[UIImage imageNamed:@"button_bg_isBuy"] forState:UIControlStateNormal];
+    if ([BmobUser getCurrentUser]) {
+        _isBuyButton.userInteractionEnabled = NO;
+        [_isBuyButton setTitle:@"你还没有参与" forState:UIControlStateNormal];
+    }else{
+        [_isBuyButton setTitle:@"登录" forState:UIControlStateNormal];
+        _isBuyButton.userInteractionEnabled = YES;
+        [_isBuyButton addTarget:self action:@selector(loginOnClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
     [_showShopView addSubview:_isBuyButton];
-    _isBuyButton.userInteractionEnabled = NO;
+    
     [headerView addSubview:_isBuyButton];
-    [_isBuyButton setTitle:@"你还没有参与" forState:UIControlStateNormal];
+    
+    
     _exerciseNameLabel.text =[NSString stringWithFormat:@"第%ld期:%@",model.term,model.goods.name];
     _scrollViewArray = [model.goods.images componentsSeparatedByString:@","];
     CGFloat w = CGRectGetWidth(_showScrollView.frame);
@@ -443,9 +469,21 @@ static NSUInteger currentPage = 1;  //记录购买记录
     
 }
 
+-(void)loginOnClick:(UIButton *)btn{
+    UIStoryboard *loginAndRegister = [UIStoryboard storyboardWithName:@"loginAndRegister" bundle:nil];
+    ZLLoginViewController *login = [loginAndRegister instantiateViewControllerWithIdentifier:@"ZLLoginViewController"];
+    
+    [self.navigationController pushViewController:login animated:YES];
+    
+
+}
+
 #pragma mark 立即购买
 -(void)nowBuyClick:(UIButton *)btn{
-
+    if (![BmobUser getCurrentUser]) {
+        [SVProgressHUD showInfoWithStatus:@"亲，还没有登录，请单击中间的登录按钮"];
+        return;
+    }
     [self addBuyOrListView:btn.currentTitle];
     
 }
@@ -453,7 +491,18 @@ static NSUInteger currentPage = 1;  //记录购买记录
 
 #pragma mark 添加到菜单
 - (void)addBuyClick:(UIButton *)btn{
-
+    if (![BmobUser getCurrentUser]) {
+        [SVProgressHUD showInfoWithStatus:@"亲，还没有登录，请单击中间的登录按钮"];
+        return;
+    }
+    if([[ZLFMDBHelp FMDBHelp]queryUid:[BmobUser getCurrentUser].username shopId:_model.shopId]){
+        [SVProgressHUD showInfoWithStatus:@"亲，此商品已经在你的购物车中了，请付款或者到购物车查看"];
+        return;
+    }
+    if ([[ZLFMDBHelp FMDBHelp] queryUid:[BmobUser getCurrentUser].username].count>=10) {
+        [SVProgressHUD showInfoWithStatus:@"亲，购物车中已经有10种商品了，不能再添加了"];
+        return;
+    }
 [self addBuyOrListView:btn.currentTitle];
     
 }
@@ -466,10 +515,28 @@ static NSUInteger currentPage = 1;  //记录购买记录
     [self.view addSubview:btn];
     [btn addTarget:self action:@selector(removeCover:) forControlEvents:UIControlEventTouchUpInside];
     ZLBuyOraddView *buyOrAdd = [[[NSBundle mainBundle]loadNibNamed:@"ZLBuyOrAddView" owner:nil options:nil] firstObject];
-    buyOrAdd.buttonBack = ^(UIButton *sender){
+    buyOrAdd.buttonBack = ^(UIButton *sender,NSInteger number){
         [self removeCover:btn];
         if ([sender.currentTitle isEqualToString:@"加入清单"]) {
             
+            
+//            if( [[ZLFMDBHelp FMDBHelp]queryUid:[BmobUser getCurrentUser].username shopId:_model.shopId]){
+//                [SVProgressHUD showInfoWithStatus:@"次商品已经在购物车中了，可以到购物车查看"];
+//                return;
+//                
+//            }
+            ZLOrderModel *order = [[ZLOrderModel alloc]initWithUserId:[BmobUser getCurrentUser].username shopId:_model.shopId dataIcon:[NSData dataWithContentsOfURL:[NSURL URLWithString:_model.goods.cover]] shopName:_model.goods.name BuyCount:_model.target_amount BuyCurrent:_model.target_amount-_model.current_amount userBuyCount:number];
+            
+            if ([[ZLFMDBHelp FMDBHelp]addModel:order]){
+                
+                [SVProgressHUD showSuccessWithStatus:@"订单添加成功"];
+                UIButton * view = [_bottomView viewWithTag:101];
+                [view setTitle:[NSString stringWithFormat:@"%ld",[[ZLFMDBHelp FMDBHelp] queryUid:[BmobUser getCurrentUser].username].count] forState:UIControlStateNormal];
+            }
+            else{
+                [SVProgressHUD showErrorWithStatus:@"添加失败"];
+                
+            }
         }
         
     };

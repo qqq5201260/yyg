@@ -18,7 +18,7 @@
  *
  *  @return 数组
  */
--(NSArray *)queryUid:(NSString *)uid;
+-(NSMutableArray *)queryUid:(NSString *)uid;
 /**
  *  查询用户指定的订单
  *
@@ -61,6 +61,5 @@
  *
  *  @return <#return value description#>
  */
--(BOOL)removeOrder:(NSString *)uid shopId:(NSString *)shopId;
-
+-(BOOL)removeOrder:(NSString *)orderId;
 @end

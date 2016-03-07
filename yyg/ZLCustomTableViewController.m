@@ -240,11 +240,21 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
 //    _userIcon.image = [UIImage imageNamed:@"commodity_detail_sunshine"];
     BmobUser *current = [BmobUser getCurrentUser];
 //    [_userIcon setBackgroundImage:[UIImage imageNamed:@"commodity_detail_sunshine"] forState:UIControlStateNormal];
-    [_userIcon sd_setBackgroundImageWithURL:[NSURL URLWithString:[current objectForKey:@"userIconUrl"]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"commodity_detail_sunshine"]];
+    if (current) {
+        [_userIcon sd_setBackgroundImageWithURL:[NSURL URLWithString:[current objectForKey:@"userIconUrl"]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"commodity_detail_sunshine"]];
+        _userName.userInteractionEnabled = NO;
+        [_userName setTitle:current.username forState:UIControlStateNormal];
+        _userId.text = current.mobilePhoneNumber;
+        _outputButton.hidden = NO;
+    }else{
+        _userIcon.imageView.image = [UIImage imageNamed:@"commodity_detail_sunshine"];
+        [_userName setTitle:@"未登录" forState:UIControlStateNormal];
+        _userId.text = @"空";
+        _outputButton.hidden = YES;
+        _userName.userInteractionEnabled = YES;
+        
+    }
     
-    [_userName setTitle:current.username forState:UIControlStateNormal];
-    _userId.text = current.mobilePhoneNumber;
-    _outputButton.hidden = NO;
 }
 
 #pragma mark - Table view data source
@@ -314,7 +324,7 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    <#DetailViewController#> *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
     
     // Pass the selected object to the new view controller.
     
@@ -334,6 +344,9 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
     destination.hidesBottomBarWhenPushed = YES;
     
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+}
 
 @end

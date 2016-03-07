@@ -65,9 +65,9 @@
     [view addSubview:time];
     
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame))];
-    btn.backgroundColor =[UIColor redColor];
+    btn.backgroundColor =[UIColor whiteColor];
     [view addSubview:btn];
-    btn.alpha = 0.1;
+    btn.alpha = 0.2;
     [btn addTarget:self action:@selector(lookShipDetail) forControlEvents:UIControlEventTouchDragInside];
 //    CGSize size = [_model.content sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}];
     CGSize size = [_model.content boundingRectWithSize:CGSizeMake(SCREENW-16, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size;

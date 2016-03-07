@@ -30,8 +30,8 @@
 - (IBAction)plusAction:(UIButton *)sender {
     NSInteger number = [self.number.text integerValue];
     number++;
-    if (number>=9999999) {
-        number = 9999999;
+    if (number>=_otherNumber) {
+        number = _otherNumber;
     }
     self.number.text = [NSString stringWithFormat:@"%ld",number];
     
@@ -46,10 +46,11 @@
     NSPredicate *fitter=[NSPredicate predicateWithFormat:@"self matches %@",num];
     //    常用的匹配方式
     if ([fitter evaluateWithObject:self.number.text]) {
-        [SVProgressHUD showSuccessWithStatus:@"添加成功"];
-        self.buttonBack(sender);
+        self.buttonBack(sender,[self.number.text integerValue]);
+//        [SVProgressHUD showSuccessWithStatus:@"添加成功"];
+        
     }else{
-        [SVProgressHUD showErrorWithStatus:@"只能是数字，且第一位不能是0，最多可以输入7位"];
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"只能是数字，且第一位不能是0，最多可以输入%ld",_otherNumber]];
     }
     
     

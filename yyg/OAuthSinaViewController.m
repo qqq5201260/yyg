@@ -119,15 +119,17 @@
             BmobUser *user = [[BmobUser alloc]init];
             //            格式为@{@"access_token":@"获取的token",@"uid":@"授权后获取的id",@"expirationDate":@"获取的过期时间（NSDate）"}
 //            获取用户头像，用户名等
-            [[AFHTTPSessionManager YYGManager]GET:@"https://api.weibo.com/2/users/show.json" parameters:@{@"access_token":model.access_token} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                user.username = responseObject[@"screen_name"];
-                NSLog(@"获取用户的用户名等信息：%@",responseObject);
-//                user setObject:@"" forKey:(NSString *)
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                
-            }];
+           
             [BmobUser signUpInBackgroundWithAuthorDictionary:@{@"access_token":model.access_token,@"uid":model.uid,@"expirationDate":model.expriresData} platform:BmobSNSPlatformSinaWeibo block:^(BmobUser *user, NSError *error) {
                 if (user) {
+                    [[AFHTTPSessionManager YYGManager]GET:@"https://api.weibo.com/2/users/show.json" parameters:@{@"access_token":model.access_token} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        NSLog(@"获取用户的用户名等信息：%@",responseObject);
+                        
+                      
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        
+                    }];
+                    
                     [SVProgressHUD showSuccessWithStatus:@"授权成功，马上跳转"];
                     [[NSNotificationCenter defaultCenter]postNotificationName:USER_REFRESH_NOTICE object:nil];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

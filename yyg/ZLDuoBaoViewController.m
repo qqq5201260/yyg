@@ -239,13 +239,25 @@ static NSUInteger loadDetailShopingPageCurrent = 1;
         if (![BmobUser getCurrentUser]) {
             [SVProgressHUD showErrorWithStatus:@"亲，还没有登录"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                ZLLoginViewController *login = [[ZLLoginViewController alloc]init];
+                UIStoryboard *loginAndRegister = [UIStoryboard storyboardWithName:@"loginAndRegister" bundle:nil];
+                                                  ZLLoginViewController *login = [loginAndRegister instantiateViewControllerWithIdentifier:@"ZLLoginViewController"];
+                
                 [self.navigationController pushViewController:login animated:YES];
                 
             });
         
             
         }else{
+            if ([[ZLFMDBHelp FMDBHelp] queryUid:[BmobUser getCurrentUser].username].count>=10) {
+                [SVProgressHUD showInfoWithStatus:@"亲，购物车中已经有10种商品了，不能再添加了"];
+                return;
+            }
+            if( [[ZLFMDBHelp FMDBHelp]queryUid:[BmobUser getCurrentUser].username shopId:model.shopId]){
+                [SVProgressHUD showInfoWithStatus:@"此商品已经在购物车中了，可以到购物车查看"];
+                return ;
+            
+            }
+            
             ZLOrderModel *order = [[ZLOrderModel alloc]initWithUserId:[BmobUser getCurrentUser].username shopId:model.shopId dataIcon:UIImagePNGRepresentation(im) shopName:model.goods.name BuyCount:model.target_amount BuyCurrent:model.target_amount-model.current_amount userBuyCount:(model.target_amount-model.current_amount)/100+1];
             
             if ([[ZLFMDBHelp FMDBHelp]addModel:order]){

@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/ZLDetailViewController.m"
-            timestampString = "478767254.198205"
+            timestampString = "479045646.785939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "-buildUI:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/ZLDetailViewController.m"
-            timestampString = "478767254.198205"
+            timestampString = "479045646.785939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "-setShopId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/ZLDetailViewController.m"
-            timestampString = "478767254.198205"
+            timestampString = "479045646.785939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-loadShipDataModel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/ZLDetailViewController.m"
-            timestampString = "478767254.198205"
+            timestampString = "479045646.785939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-loadBuyListWithUrl:first:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/ZLDetailViewController.m"
-            timestampString = "478767254.198205"
+            timestampString = "479045646.785939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "-createUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,76 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yyg/OAuthSinaViewController.m"
-            timestampString = "478960971.060282"
+            timestampString = "479048669.587462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-getAccessTokenWithCode:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[OAuthSinaViewController getAccessTokenWithCode:]_block_invoke"
-                  moduleName = "yyg"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/czl/Documents/%E7%BD%91%E7%BB%9C%E9%98%B6%E6%AE%B5/%E4%B8%80%E5%85%83%E8%B4%AD%E9%A1%B9%E7%9B%AE/yyg/OAuthSinaViewController.m"
-                  timestampString = "479028091.606755"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "594">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[OAuthSinaViewController getAccessTokenWithCode:]_block_invoke_4"
-                  moduleName = "yyg"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/czl/Documents/%E7%BD%91%E7%BB%9C%E9%98%B6%E6%AE%B5/%E4%B8%80%E5%85%83%E8%B4%AD%E9%A1%B9%E7%9B%AE/yyg/OAuthSinaViewController.m"
-                  timestampString = "479028091.606975"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "70">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yyg/OAuthSinaViewController.m"
-            timestampString = "478960971.060282"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-getAccessTokenWithCode:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "yyg/ZLDuoBaoViewController.m"
-            timestampString = "479026113.746282"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

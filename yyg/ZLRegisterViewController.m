@@ -185,7 +185,12 @@
 
 
 
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.username resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.verifyCodeTF resignFirstResponder];
+    
+}
 
 
 
