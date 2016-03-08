@@ -247,12 +247,13 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
         _userId.text = current.mobilePhoneNumber;
         _outputButton.hidden = NO;
     }else{
+        
         _userIcon.imageView.image = [UIImage imageNamed:@"commodity_detail_sunshine"];
         [_userName setTitle:@"未登录" forState:UIControlStateNormal];
         _userId.text = @"空";
         _outputButton.hidden = YES;
         _userName.userInteractionEnabled = YES;
-        
+        [self.view setNeedsDisplay];//刷新页面
     }
     
 }

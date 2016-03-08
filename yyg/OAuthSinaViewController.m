@@ -116,32 +116,73 @@
         
         
         if (isSuc) {
-            BmobUser *user = [[BmobUser alloc]init];
+//            BmobUser *user = [[BmobUser alloc]init];
             //            格式为@{@"access_token":@"获取的token",@"uid":@"授权后获取的id",@"expirationDate":@"获取的过期时间（NSDate）"}
 //            获取用户头像，用户名等
            
             [BmobUser signUpInBackgroundWithAuthorDictionary:@{@"access_token":model.access_token,@"uid":model.uid,@"expirationDate":model.expriresData} platform:BmobSNSPlatformSinaWeibo block:^(BmobUser *user, NSError *error) {
                 if (user) {
                     [[AFHTTPSessionManager YYGManager]GET:@"https://api.weibo.com/2/users/show.json" parameters:@{@"access_token":model.access_token} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                        NSLog(@"获取用户的用户名等信息：%@",responseObject);
-                        
+                        NSString *url =[NSString stringWithFormat:@"%@",responseObject[@"profile_image_url"]];
+                        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+                        [BmobProFile uploadFileWithFilename:@"用户图标" fileData:data block:^(BOOL isSuccessful, NSError *error, NSString *filename, NSString *url, BmobFile *file) {
+                            if (isSuccessful) {
+                                NSLog(@"url = %@",url);
+                                NSLog(@"file = %@",file);
+                                
+                                
+                                
+                                // 将上传的图片链接和用户联系起来
+                                BmobUser *user = [BmobUser getCurrentUser];
+                                [user setObject:file.url forKey:@"userIconUrl"];
+                                
+                                [user updateInBackgroundWithResultBlock:^(BOOL isSuc, NSError *err) {
+                                    if (isSuc) {
+                                        [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+                                        // 获取服务器处理之后的图片的地址
+                                        [BmobImage cutImageBySpecifiesTheWidth:100 height:100 quality:50 sourceImageUrl:file.url outputType:kBmobImageOutputBmobFile resultBlock:^(id object, NSError *error) {
+                                           
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:USER_REFRESH_NOTICE object:nil];
+                                            
+                                        }];
+                                        
+                                        
+                                        
+                                        
+                                    }else {
+                                        [SVProgressHUD showErrorWithStatus:[err localizedDescription]];
+                                    }
+                                }];
+                                
+                                
+                                
+                            }else {
+                                [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+                            }
+                            
+                            
+                        } progress:^(CGFloat progress) {
+                            //上传进度
+                            [SVProgressHUD showProgress:progress];
+                            
+                        }];
                       
                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                         
                     }];
                     
-                    [SVProgressHUD showSuccessWithStatus:@"授权成功，马上跳转"];
-                    [[NSNotificationCenter defaultCenter]postNotificationName:USER_REFRESH_NOTICE object:nil];
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-                    });
+                   
                     
                 }
                 
             }];
             // 跳转到首页 或者 新特新页面
             //            [NewFeatureTool choseRootViewController];
-            
+            [SVProgressHUD showSuccessWithStatus:@"授权成功，马上跳转"];
+            [[NSNotificationCenter defaultCenter]postNotificationName:USER_REFRESH_NOTICE object:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
             
         }else {
             NSLog(@"存储授权信息失败");

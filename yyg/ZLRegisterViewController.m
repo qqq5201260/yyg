@@ -99,6 +99,7 @@
     
     _verifyPhoneNumber = self.username.text;
     btn.enabled = NO;
+//    获取短信是否发送
     [BmobSMS requestSMSCodeInBackgroundWithPhoneNumber:self.username.text andTemplate:@"test" resultBlock:^(int number, NSError *error) {
         if (error == nil) {
             [SVProgressHUD showSuccessWithStatus:@"短信已发送，请注意查收"];
