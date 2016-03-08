@@ -30,6 +30,73 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
     [super viewDidLoad];
     [self getNotifyAndDoChangeUserIcon:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNotifyAndDoChangeUserIcon:) name:USER_REFRESH_NOTICE object:nil];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadPic:) name:@"token" object:nil];
+    });
+   
+
+
+}
+
+- (void)uploadPic:(NSNotification *)notify{
+
+    
+    
+                [[AFHTTPSessionManager YYGManager]GET:@"https://api.weibo.com/2/users/show.json" parameters:@{@"access_token":notify.userInfo[@"token"]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    NSString *url =[NSString stringWithFormat:@"%@",responseObject[@"profile_image_url"]];
+                    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+                    [BmobProFile uploadFileWithFilename:@"用户图标" fileData:data block:^(BOOL isSuccessful, NSError *error, NSString *filename, NSString *url, BmobFile *file) {
+                        if (isSuccessful) {
+                            NSLog(@"url = %@",url);
+                            NSLog(@"file = %@",file);
+    
+    
+    
+                            // 将上传的图片链接和用户联系起来
+                            BmobUser *user = [BmobUser getCurrentUser];
+                            [user setObject:file.url forKey:@"userIconUrl"];
+    
+                            [user updateInBackgroundWithResultBlock:^(BOOL isSuc, NSError *err) {
+                                if (isSuc) {
+                                    [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+                                    // 获取服务器处理之后的图片的地址
+                                    [BmobImage cutImageBySpecifiesTheWidth:100 height:100 quality:50 sourceImageUrl:file.url outputType:kBmobImageOutputBmobFile resultBlock:^(id object, NSError *error) {
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                       [[NSNotificationCenter defaultCenter] postNotificationName:USER_REFRESH_NOTICE object:nil];
+                           });
+                                     
+    
+                                    }];
+    
+    
+    
+    
+                                }else {
+                                    [SVProgressHUD showErrorWithStatus:[err localizedDescription]];
+                                }
+                            }];
+    
+    
+    
+                        }else {
+                            [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+                        }
+    
+    
+                    } progress:^(CGFloat progress) {
+                        //上传进度
+                        [SVProgressHUD showProgress:progress];
+    
+                    }];
+                    
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    
+                }];
+    
+
+
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -246,6 +313,7 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
         [_userName setTitle:current.username forState:UIControlStateNormal];
         _userId.text = current.mobilePhoneNumber;
         _outputButton.hidden = NO;
+        
     }else{
         
         _userIcon.imageView.image = [UIImage imageNamed:@"commodity_detail_sunshine"];

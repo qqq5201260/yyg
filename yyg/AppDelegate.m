@@ -32,6 +32,7 @@
     [Bmob registerWithAppKey:@"1891b2a0dc45764948491db62a3e9798"];
     [ZLFMDBHelp FMDBHelp];
     // Override point for customization after application launch.
+    
     return YES;
 }
 
