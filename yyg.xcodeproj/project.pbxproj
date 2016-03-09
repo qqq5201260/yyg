@@ -28,6 +28,7 @@
 		0D78A0841C8987980042CA19 /* ZLOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D78A0831C8987980042CA19 /* ZLOrderTableViewController.m */; };
 		0D829D6F1C8688170014B795 /* ZLFindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D829D6D1C8688170014B795 /* ZLFindTableViewCell.m */; };
 		0D829D701C8688170014B795 /* ZLFindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D829D6E1C8688170014B795 /* ZLFindTableViewCell.xib */; };
+		0D9747E31C8F09FE007E1F0C /* libUMessage_Sdk_1.2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9747E11C8F09FE007E1F0C /* libUMessage_Sdk_1.2.6.a */; };
 		0DB394911C85D660006AAEED /* ZLFindTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB394901C85D660006AAEED /* ZLFindTitleModel.m */; };
 		0DB5A7C01C8D0D8B00498F52 /* ZLOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB5A7BF1C8D0D8B00498F52 /* ZLOrderModel.m */; };
 		0DB5A7C31C8D109500498F52 /* ZLFMDBHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB5A7C21C8D109500498F52 /* ZLFMDBHelp.m */; };
@@ -115,6 +116,8 @@
 		0D829D6C1C8688170014B795 /* ZLFindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFindTableViewCell.h; sourceTree = "<group>"; };
 		0D829D6D1C8688170014B795 /* ZLFindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLFindTableViewCell.m; sourceTree = "<group>"; };
 		0D829D6E1C8688170014B795 /* ZLFindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLFindTableViewCell.xib; sourceTree = "<group>"; };
+		0D9747E11C8F09FE007E1F0C /* libUMessage_Sdk_1.2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.2.6.a; sourceTree = "<group>"; };
+		0D9747E21C8F09FE007E1F0C /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		0DB3948F1C85D660006AAEED /* ZLFindTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFindTitleModel.h; sourceTree = "<group>"; };
 		0DB394901C85D660006AAEED /* ZLFindTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLFindTitleModel.m; sourceTree = "<group>"; };
 		0DB5A7BE1C8D0D8B00498F52 /* ZLOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLOrderModel.h; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9747E31C8F09FE007E1F0C /* libUMessage_Sdk_1.2.6.a in Frameworks */,
 				627B592965DD7C8DFD3B9A25 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +250,15 @@
 				0DB5A7C21C8D109500498F52 /* ZLFMDBHelp.m */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		0D9747E01C8F09FE007E1F0C /* UMessage_Sdk_1.2.6 */ = {
+			isa = PBXGroup;
+			children = (
+				0D9747E11C8F09FE007E1F0C /* libUMessage_Sdk_1.2.6.a */,
+				0D9747E21C8F09FE007E1F0C /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.2.6;
 			sourceTree = "<group>";
 		};
 		4ECFCB55A360A193E1E54B26 /* Pods */ = {
@@ -326,6 +339,7 @@
 		BC7B7F2E1C7C6E320078CCE0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0D9747E01C8F09FE007E1F0C /* UMessage_Sdk_1.2.6 */,
 				0D7438031C8A875A005B8891 /* Mybutton.h */,
 				0D7438041C8A875A005B8891 /* Mybutton.m */,
 				BC7B7F2F1C7C6E7E0078CCE0 /* AFHTTPSessionManager+Util.h */,
@@ -679,6 +693,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d7da330a-e9f0-48a0-b5ed-88c1c45eb5f1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -716,6 +731,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "d7da330a-e9f0-48a0-b5ed-88c1c45eb5f1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -728,13 +744,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/yyg/ZLPrefixHeader.pch";
 				INFOPLIST_FILE = yyg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yyg/UMessage_Sdk_1.2.6",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.czl.yyg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b0db99b-67d3-4c07-baca-d89756b6f638";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -744,13 +765,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/yyg/ZLPrefixHeader.pch";
 				INFOPLIST_FILE = yyg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yyg/UMessage_Sdk_1.2.6",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.czl.yyg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b0db99b-67d3-4c07-baca-d89756b6f638";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

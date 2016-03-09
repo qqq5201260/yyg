@@ -20,6 +20,8 @@
 #include <UIButton+WebCache.h>
 #include <FMDB.h>
 #include <BmobSDK/Bmob.h>
+#include "UMessage.h"
+
 
 #include <MJRefresh.h>
 //添加自定义类别
