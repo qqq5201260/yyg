@@ -103,6 +103,7 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark 选择图片
 - (IBAction)chicePic:(UIButton *)sender {
     if (![BmobUser getCurrentUser]) {

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <JavaScriptCore/JavaScriptCore.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
-//@protocol ZLPicDetailWebViewDelegate  <JSExport>
-//
-//- (void) letsGoBack;
-//
-//@end
-@interface ZLPicDetailViewController : UIViewController
+@protocol ZLPicDetailWebViewDelegate  <JSExport>
+
+- (void) letsGoBack;
+
+@end
+@interface ZLPicDetailViewController : UIViewController<ZLPicDetailWebViewDelegate>
 
 @property (nonatomic,copy) NSString *picUrl;
 
