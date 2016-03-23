@@ -16,6 +16,8 @@
 #import "ZLShareViewController.h"
 #import "ZLBuyOraddView.h"
 #import "ZLLoginViewController.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLDetailViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *showScrollView;
 //@property (weak, nonatomic) IBOutlet UIPageControl *showPageControl;

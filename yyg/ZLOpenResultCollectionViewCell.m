@@ -7,6 +7,8 @@
 //
 
 #import "ZLOpenResultCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLOpenResultCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *shopIcon;
 

@@ -7,6 +7,8 @@
 //
 
 #import "CollectionViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface CollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *shopImageView;
 

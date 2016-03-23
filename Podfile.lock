@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - BmobSDK (1.6.6)
+  - EaseMobSDK (2.1.9)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
@@ -23,11 +24,12 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SVProgressHUD (1.1.3)
-  - YYModel (0.9.12)
+  - YYModel (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking
   - BmobSDK
+  - EaseMobSDK
   - FMDB
   - MJRefresh
   - SDWebImage
@@ -37,10 +39,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BmobSDK: c896d4ff3986f2b4fc8406fb2b801230f7419878
+  EaseMobSDK: cc8415cb99a65debf4711fa2c9c349fd5c843299
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
-  YYModel: 33a27f41a995f4c36ff8178421bac9f221a9c7ea
+  YYModel: 794f0820a9a9703615bc166aa8e336abaf422c2b
 
 COCOAPODS: 0.39.0

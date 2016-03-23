@@ -7,6 +7,8 @@
 //
 
 #import "ZLUserShowTableViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLUserShowTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *userIcon;
 

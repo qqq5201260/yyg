@@ -13,6 +13,8 @@
 #import "ZLUserShowTableViewCell.h"
 #import "ZLMainGoodsModel.h"
 #import "ZLBuyNumbersViewController.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLUserCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UIImageView *userIcon;

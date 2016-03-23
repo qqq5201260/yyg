@@ -5,7 +5,8 @@
 //  Created by 千锋 on 16/2/26.
 //  Copyright © 2016年 czl. All rights reserved.
 //
-
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 #import "ZLWinnerSmalTableViewCell.h"
 @interface ZLWinnerSmalTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *shopIcon;

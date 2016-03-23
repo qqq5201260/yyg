@@ -10,6 +10,8 @@
 
 #import "ZLShareDetailViewController.h"
 #import "ZLSharePicModel.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 #import "ZLDetailViewController.h"
 @interface ZLShareDetailViewController ()
 

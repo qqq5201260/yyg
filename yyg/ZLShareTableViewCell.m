@@ -7,6 +7,8 @@
 //
 
 #import "ZLShareTableViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLShareTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *usrIcon;

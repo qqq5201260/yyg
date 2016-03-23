@@ -11,13 +11,34 @@
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "LocalDefine.h"
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+
+
+//Ext keyWord
+#define kMesssageExtWeChat @"weichat"
+#define kMesssageExtWeChat_ctrlType @"ctrlType"
+#define kMesssageExtWeChat_ctrlType_enquiry @"enquiry"
+#define kMesssageExtWeChat_ctrlType_inviteEnquiry @"inviteEnquiry"
+#define kMesssageExtWeChat_ctrlArgs @"ctrlArgs"
+#define kMesssageExtWeChat_ctrlArgs_inviteId @"inviteId"
+#define kMesssageExtWeChat_ctrlArgs_serviceSessionId @"serviceSessionId"
+#define kMesssageExtWeChat_ctrlArgs_detail @"detail"
+#define kMesssageExtWeChat_ctrlArgs_summary @"summary"
+
+
+
 //第三方库
 #include <YYModel.h>
 #include <YYModel.h>
 #include <AFNetworking.h>
 #include <SVProgressHUD.h>
-#include <UIImageView+WebCache.h>
-#include <UIButton+WebCache.h>
+
 #include <FMDB.h>
 #include <BmobSDK/Bmob.h>
 #include "UMessage.h"

@@ -8,8 +8,11 @@
 
 #import "ZLCustomTableViewController.h"
 #import "ZLLoginViewController.h"
-
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 #import <BmobSDK/Bmob.h>
+#import "ChatViewController.h"
+#import "EMIMHelper.h"
 
 typedef NS_ENUM(NSInteger, ChosePhontType) {
     ChosePhontTypeAlbum,
@@ -22,9 +25,23 @@ typedef NS_ENUM(NSInteger, ChosePhontType) {
 @property (weak, nonatomic) IBOutlet UIButton *userName;
 @property (weak, nonatomic) IBOutlet UILabel *userId;
 
+
 @end
 
 @implementation ZLCustomTableViewController
+- (IBAction)gotoService:(id)sender {
+    
+    [[EMIMHelper defaultHelper] loginEasemobSDK];
+    [[EMIMHelper defaultHelper]setCname:@"laochen"];
+    
+    NSString *cname = [[EMIMHelper defaultHelper] cname];
+    
+    ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:cname type:eSaleTypeNone];
+    
+    chatController.title = @"演示客服";
+    [self.navigationController pushViewController:chatController animated:YES];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

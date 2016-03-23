@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import <BmobSDK/Bmob.h>
 #import "ZLFMDBHelp.h"
+#import "AppDelegate+EaseMob.h"
 #define UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define _IPHONE80_ 80000
 @interface AppDelegate ()
@@ -30,6 +31,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+     [self easemobApplication:application didFinishLaunchingWithOptions:launchOptions];
+    
     // 向bmob服务器注册你自己的应用
     [Bmob registerWithAppKey:@"1891b2a0dc45764948491db62a3e9798"];
 //    [ZLFMDBHelp FMDBHelp];

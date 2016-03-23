@@ -7,6 +7,8 @@
 //
 
 #import "ZLUserBuyTableViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLUserBuyTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *shopIcon;
 @property (weak, nonatomic) IBOutlet UILabel *shopTerm;

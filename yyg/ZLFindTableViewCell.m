@@ -12,6 +12,8 @@
 //
 
 #import "ZLFindTableViewCell.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLFindTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;

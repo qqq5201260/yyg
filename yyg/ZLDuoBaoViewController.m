@@ -12,6 +12,8 @@
 #import "CollectionViewCell.h"
 #import "ZLDetailViewController.h"
 #import "ZLLoginViewController.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 static NSUInteger congratulationButtonCurrent = 0;
 static NSUInteger bannersPageControlCurrent = 0;
 static NSUInteger loadDetailShopingPageCurrent = 1;

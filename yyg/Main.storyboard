@@ -310,6 +310,43 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="qpt-bP-Q8f">
+                                        <rect key="frame" x="0.0" y="436" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpt-bP-Q8f" id="xmg-7C-9kn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_invite" translatesAutoresizingMaskIntoConstraints="NO" id="9xK-D2-wbm">
+                                                    <rect key="frame" x="9" y="9" width="44" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="VB2-Uo-ZFd"/>
+                                                        <constraint firstAttribute="height" constant="46" id="ubP-xn-AsI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiA-rc-WuC">
+                                                    <rect key="frame" x="69" y="9" width="200" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="ge2-JE-z6e"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="客服">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="gotoService:" destination="cHU-5Q-suU" eventType="touchUpInside" id="RhP-eh-XMO"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9xK-D2-wbm" firstAttribute="leading" secondItem="xmg-7C-9kn" secondAttribute="leadingMargin" constant="1" id="Ae3-NO-Jiw"/>
+                                                <constraint firstItem="9xK-D2-wbm" firstAttribute="top" secondItem="xmg-7C-9kn" secondAttribute="topMargin" constant="1" id="LTa-R9-fGd"/>
+                                                <constraint firstItem="uiA-rc-WuC" firstAttribute="height" secondItem="9xK-D2-wbm" secondAttribute="height" id="QBe-gn-cJX"/>
+                                                <constraint firstItem="uiA-rc-WuC" firstAttribute="centerY" secondItem="9xK-D2-wbm" secondAttribute="centerY" id="Z0n-xU-zhf"/>
+                                                <constraint firstItem="uiA-rc-WuC" firstAttribute="leading" secondItem="9xK-D2-wbm" secondAttribute="trailing" constant="16" id="ghb-dJ-du0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

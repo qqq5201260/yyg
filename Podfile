@@ -6,4 +6,5 @@ pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'BmobSDK'
 pod 'FMDB'
+pod 'EaseMobSDK'
 

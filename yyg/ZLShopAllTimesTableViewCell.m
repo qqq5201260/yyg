@@ -9,7 +9,8 @@
 //
 
 #import "ZLShopAllTimesTableViewCell.h"
-
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLShopAllTimesTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *termLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *winIcon;

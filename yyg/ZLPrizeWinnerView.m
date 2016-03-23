@@ -7,6 +7,8 @@
 //
 
 #import "ZLPrizeWinnerView.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 @interface ZLPrizeWinnerView()
 @property (weak, nonatomic) IBOutlet UIImageView *useIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *username;
