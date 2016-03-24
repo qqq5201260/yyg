@@ -9,7 +9,7 @@
 #import "EMIMHelper.h"
 
 #import "EaseMob.h"
-#import "LocalDefine.h"
+//#import "LocalDefine.h"
 
 static EMIMHelper *helper = nil;
 

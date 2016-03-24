@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import <EaseMob.h>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,IChatManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+EaseMob.h"
-#import <EaseMob.h>
+
 #import "EMIMHelper.h"
 #import "LocalDefine.h"
 

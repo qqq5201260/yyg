@@ -84,6 +84,36 @@
         //for log
         [UMessage setLogEnabled:YES];
     
+    
+    AFNetworkReachabilityManager *af=[AFNetworkReachabilityManager sharedManager];
+    
+    [af setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSString *str = nil;
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+//                NSLog(@"未知网络");
+                str = @"未知网络";
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+//                NSLog(@"手机网络");
+                str = @"手机网络";
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                NSLog(@"没有网络");
+                str = @"没有网络";
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                NSLog(@"切换到网络WIFI");
+                str = @"切换到网络WIFI";
+                break;
+            default:
+                break;
+        }
+        [SVProgressHUD showInfoWithStatus:str];
+    }];
+    //    开始监听
+    [af startMonitoring];
+    
     return YES;
 }
 

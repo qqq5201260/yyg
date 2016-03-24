@@ -38,7 +38,7 @@
     EMChatText *text = [[EMChatText alloc] initWithText:willSendText];
     EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithChatObject:text];
     EMMessage *emm = [self sendMessage:username messageBody:body isChatGroup:isChatGroup requireEncryption:requireEncryption ext:ext];
-    NSLog(@"%@",emm);
+//    NSLog(@"%@",emm);
     return emm;
 }
 

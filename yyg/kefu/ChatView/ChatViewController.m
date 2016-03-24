@@ -1,14 +1,14 @@
 /************************************************************
-  *  * EaseMob CONFIDENTIAL 
-  * __________________ 
-  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved. 
-  *  
-  * NOTICE: All information contained herein is, and remains 
-  * the property of EaseMob Technologies.
-  * Dissemination of this information or reproduction of this material 
-  * is strictly forbidden unless prior written permission is obtained
-  * from EaseMob Technologies.
-  */
+ *  * EaseMob CONFIDENTIAL
+ * __________________
+ * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
+ *
+ * NOTICE: All information contained herein is, and remains
+ * the property of EaseMob Technologies.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from EaseMob Technologies.
+ */
 
 #import "ChatViewController.h"
 #import <AVFoundation/AVFoundation.h>
@@ -116,13 +116,13 @@
     [super viewDidLoad];
     [self registerBecomeActive];
     // Do any additional setup after loading the view.
-//    self.title = NSLocalizedString(@"title.customer", @"Customer");
+    //    self.title = NSLocalizedString(@"title.customer", @"Customer");
     self.view.backgroundColor = [UIColor colorWithRed:235 / 255.0 green:235 / 255.0 blue:235 / 255.0 alpha:1.0];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         self.edgesForExtendedLayout =  UIRectEdgeNone;
     }
     
-    #warning 以下三行代码必须写，注册为SDK的ChatManager的delegate
+#warning 以下三行代码必须写，注册为SDK的ChatManager的delegate
     [EMCDDeviceManager sharedInstance].delegate = self;
     [[EaseMob sharedInstance].chatManager removeDelegate:self];
     //注册为SDK的ChatManager的delegate
@@ -202,7 +202,7 @@
     [[EaseMob sharedInstance].chatManager removeDelegate:self];
 }
 
-#pragma mark - 
+#pragma mark -
 
 - (void)setupBarButtonItem
 {
@@ -462,7 +462,7 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
-	if (recognizer.state == UIGestureRecognizerStateBegan && [self.dataSource count] > 0) {
+    if (recognizer.state == UIGestureRecognizerStateBegan && [self.dataSource count] > 0) {
         CGPoint location = [recognizer locationInView:self.tableView];
         NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:location];
         id object = [self.dataSource objectAtIndex:indexPath.row];
@@ -1167,8 +1167,8 @@
 {
     NSDictionary *ext = nil;
     NSMutableDictionary *visitor = [NSMutableDictionary dictionary];
-    [visitor setObject:@"李明" forKey:@"trueName"];
-    [visitor setObject:@"10000" forKey:@"qq"];
+    [visitor setObject:@"李hao" forKey:@"trueName"];
+    [visitor setObject:@"100001" forKey:@"qq"];
     [visitor setObject:@"13512345678" forKey:@"phone"];
     [visitor setObject:@"环信" forKey:@"companyName"];
     NSString *nickname = [[EMIMHelper defaultHelper] nickname];
@@ -1208,7 +1208,7 @@
     return ext;
 }
 
-#pragma mark 
+#pragma mark
 - (void)commitSatisfactionWithExt:(NSDictionary*)ext messageModel:(MessageModel*)model
 {
     NSString *willSendText = [ConvertToCommonEmoticonsHelper convertToCommonEmoticons:@""];

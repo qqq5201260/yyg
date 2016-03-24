@@ -1,14 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F+++4BDE500",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "2C3205CD949B790D90C764D19EE2C581652E3B8F" : 0
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++4BDE500" : 0,
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++1F6D06D" : 0,
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++AC11A74" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54A49EB1-8ABA-43C1-8661-45DE89AE3B06",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "2C3205CD949B790D90C764D19EE2C581652E3B8F" : ""
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++4BDE500" : "yyg\/",
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++1F6D06D" : "",
+    "2C3205CD949B790D90C764D19EE2C581652E3B8F+++AC11A74" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "yyg",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -17,12 +21,17 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/qqq5201260\/yyg.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F+++1F6D06D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:qqq5201260\/yyg.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F+++4BDE500"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/qqq5201260\/yyg.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C3205CD949B790D90C764D19EE2C581652E3B8F+++AC11A74"
     }
   ]
 }
